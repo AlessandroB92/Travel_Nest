@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Travel_Nest.Models.Alloggi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Utenti.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeAlloggio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descrizione)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Citta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrezzoPerNotte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponibilita)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Utenti.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeAlloggio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descrizione)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Citta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PrezzoPerNotte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponibilita)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDAlloggio }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDAlloggio }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDAlloggio })
+        </td>
+    </tr>
+}
+
+</table>
