@@ -1,18 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Travel_Nest.Models
 {
     public class LoginModel
     {
-        [Required(ErrorMessage = "Inserisci l'Username")]
+        [Required(ErrorMessage = "Inserisci l'e-mail o il nome utente")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Inserisci la Password")]
         public string Password { get; set; }
+
+        public bool IsAdmin { get; set; }
         public string ErrorMessage { get; set; }
     }
 }

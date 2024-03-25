@@ -13,16 +13,6 @@ namespace back_end_s7.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var isAdmin = dbContext.Admin.Any(a => a.Nome == User.Identity.Name);
-                if (isAdmin)
-                {
-                    Roles.AddUserToRole(User.Identity.Name, "Admin");
-                }
-                else
-                {
-                    Roles.AddUserToRole(User.Identity.Name, "User");
-                }
-
                 return RedirectToAction("Index", "Home");
             }
             ViewBag.ErrorMessage = TempData["ErrorMessage"];
@@ -35,16 +25,24 @@ namespace back_end_s7.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = dbContext.Utenti.FirstOrDefault(u => u.Nome == model.Nome && u.Password == model.Password);
-                var admin = dbContext.Admin.FirstOrDefault(a => a.Nome == model.Nome && a.Password == model.Password);
-                if (user != null)
+                // Controlla se l'utente è un admin o un utente normale
+                var isAdmin = dbContext.Admin.Any(a => a.Nome == model.Nome && a.Password == model.Password);
+
+                if (isAdmin)
                 {
-                    FormsAuthentication.SetAuthCookie(user.Nome, true);
-                    return RedirectToAction("Index", "Home");
+                    // Se è un admin, imposta IsAdmin a true nel modello di login
+                    model.IsAdmin = true;
                 }
-                if (admin != null)
+                else
                 {
-                    FormsAuthentication.SetAuthCookie(admin.Nome, true);
+                    // Se non è un admin, imposta IsAdmin a false nel modello di login
+                    model.IsAdmin = false;
+                }
+
+                // Effettua il login
+                if (isAdmin || dbContext.Utenti.Any(u => u.Email == model.Nome && u.Password == model.Password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.Nome, true);
                     return RedirectToAction("Index", "Home");
                 }
                 else
