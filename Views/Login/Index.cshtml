@@ -4,10 +4,10 @@
     ViewBag.Title = "Login";
 }
 
-<h2 class="text-center bg-dark bg-opacity-25 py-3 mb-5 rounded-3">Login</h2>
+
 @if (TempData["Message"] != null)
 {
-    <div class="alert alert-success text-center w-50 m-auto mb-5" role="alert">
+    <div class="alert alert-success text-center w-50" role="alert">
         @TempData["Message"]
     </div>
 }
@@ -20,17 +20,22 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+<div id="login" class="container d-flex align-items-center py-5 bg-light rounded-3" style="height: 350px; width:300px; margin:100px auto;">
     <div class="container d-flex align-content-center align-items-center flex-column">
-        <div class="form-group d-flex flex-column align-items-center justify-content-center mb-3">
+        <h2 class="text-center py-3 rounded-3">Login</h2>
+        <div class="form-group d-flex align-items-center py-3">
+            <i class="fa-solid fa-envelope" style="color: #373737; margin-right:5px;"></i>
             @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", placeholder = "Email" })
             @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
         </div>
 
-        <div class="form-group d-flex flex-column align-items-center justify-content-center mb-3">
+        <div class="form-group d-flex align-items-center py-3">
+            <i class="fa-solid fa-key" style="color: #373737; margin-right:5px;"></i>
             @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
             @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
         </div>
 
-        <button type="submit" class="btn btn-success mb-5">Login</button>
+        <button type="submit" class="btn btn-success my-3">Login</button>
     </div>
+</div>
 }
