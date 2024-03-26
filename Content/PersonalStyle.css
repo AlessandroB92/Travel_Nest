@@ -1,0 +1,9 @@
+﻿body {
+    background-color: #c4f6ff;
+}
+#banner{
+    width:100%;
+    height:100vh;
+    background-image:url('Images/Cattedrale_di_Palermo.jpg');
+    background-size:cover;
+}

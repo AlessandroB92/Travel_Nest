@@ -4,18 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 class="text-center">Lista Alloggi</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<div class="text-center">
+    <button type="button" class="btn btn-primary my-3" onclick="location.href='@Url.Action("Create")'">Create New</button>
+</div>
+
+<table class="table table-hover w-50 m-auto bg-light rounded-2">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NomeAlloggio)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descrizione)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Citta)
@@ -35,9 +33,6 @@
             @Html.DisplayFor(modelItem => item.NomeAlloggio)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descrizione)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Citta)
         </td>
         <td>
@@ -47,9 +42,10 @@
             @Html.DisplayFor(modelItem => item.Disponibilita)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IDAlloggio }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IDAlloggio }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IDAlloggio })
+            <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-info text-white mx-1" onclick="location.href='@Url.Action("Edit", new { id = item.IDAlloggio })'">Edit</button>
+                <button type="button" class="btn btn-danger mx-1" onclick="location.href='@Url.Action("Delete", new { id = item.IDAlloggio })'">Delete</button>
+            </div>
         </td>
     </tr>
 }

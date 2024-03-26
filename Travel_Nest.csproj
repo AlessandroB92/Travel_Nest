@@ -300,6 +300,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\Cattedrale_di_Palermo.jpg" />
+    <Content Include="Content\PersonalStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -349,12 +351,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Alloggi\Create.cshtml" />
     <Content Include="Views\Alloggi\Delete.cshtml" />
-    <Content Include="Views\Alloggi\Details.cshtml" />
     <Content Include="Views\Alloggi\Edit.cshtml" />
     <Content Include="Views\Alloggi\Index.cshtml" />
     <Content Include="Views\Utenti\Create.cshtml" />
     <Content Include="Views\Utenti\Delete.cshtml" />
-    <Content Include="Views\Utenti\Details.cshtml" />
     <Content Include="Views\Utenti\Edit.cshtml" />
     <Content Include="Views\Utenti\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
