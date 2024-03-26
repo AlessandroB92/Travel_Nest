@@ -15,26 +15,13 @@ namespace Travel_Nest.Controllers
     {
         private TravelDb db = new TravelDb();
 
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
             var alloggi = db.Alloggi.Include(a => a.Utenti);
             return View(await alloggi.ToListAsync());
         }
-
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Alloggi alloggi = await db.Alloggi.FindAsync(id);
-            if (alloggi == null)
-            {
-                return HttpNotFound();
-            }
-            return View(alloggi);
-        }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.IDUtente = new SelectList(db.Utenti, "IDUtente", "Nome");
@@ -55,7 +42,7 @@ namespace Travel_Nest.Controllers
             ViewBag.IDUtente = new SelectList(db.Utenti, "IDUtente", "Nome", alloggi.IDUtente);
             return View(alloggi);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,6 +60,7 @@ namespace Travel_Nest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit([Bind(Include = "IDAlloggio,NomeAlloggio,Descrizione,Citta,PrezzoPerNotte,Disponibilita")] Alloggi alloggi)
         {
             if (ModelState.IsValid)
@@ -84,7 +72,7 @@ namespace Travel_Nest.Controllers
             ViewBag.IDUtente = new SelectList(db.Utenti, "IDUtente", "Nome", alloggi.IDUtente);
             return View(alloggi);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
@@ -101,6 +89,7 @@ namespace Travel_Nest.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             Alloggi alloggi = await db.Alloggi.FindAsync(id);

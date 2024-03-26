@@ -7,7 +7,7 @@
 
 @if (TempData["Message"] != null)
 {
-    <div class="alert alert-success text-center w-50" role="alert">
+    <div class="alert alert-success text-center w-50 my-4 m-auto" role="alert">
         @TempData["Message"]
     </div>
 }
@@ -20,7 +20,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-<div id="login" class="container d-flex align-items-center py-5 bg-light rounded-3" style="height: 350px; width:300px; margin:100px auto;">
+<div id="login" class="container d-flex align-items-center py-5 bg-light rounded-3" style="height: 368px; width:300px; margin:100px auto;">
     <div class="container d-flex align-content-center align-items-center flex-column">
         <h2 class="text-center py-3 rounded-3">Login</h2>
         <div class="form-group d-flex align-items-center py-3">
