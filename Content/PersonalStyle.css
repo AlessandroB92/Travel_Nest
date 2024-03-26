@@ -6,4 +6,5 @@
     height:100vh;
     background-image:url('Images/Cattedrale_di_Palermo.jpg');
     background-size:cover;
+    opacity: 0.9;
 }
