@@ -31,7 +31,7 @@ namespace Travel_Nest.Models
 
         public decimal? PrezzoPerNotte { get; set; }
 
-        public bool? Disponibilita { get; set; }
+        public bool Disponibilita { get; set; }
 
         public virtual Utenti Utenti { get; set; }
 

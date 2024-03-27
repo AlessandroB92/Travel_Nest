@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h1 class="text-center fw-bold">Lista Alloggi</h1>
+<h1 class="text-center fw-bold my-3">Lista Alloggi</h1>
 
 <div class="text-center">
     <button type="button" class="btn btn-primary my-3" onclick="location.href='@Url.Action("Create")'">Aggiuni Alloggio</button>
@@ -21,7 +21,7 @@
         <th>
             @Html.DisplayNameFor(model => model.PrezzoPerNotte)
         </th>
-        <th>
+        <th class="text-center">
             @Html.DisplayNameFor(model => model.Disponibilita)
         </th>
         <th></th>
@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.Citta)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PrezzoPerNotte)
+            @Html.DisplayFor(modelItem => item.PrezzoPerNotte) &euro;
         </td>
-        <td>
+        <td class="text-center">
             @Html.DisplayFor(modelItem => item.Disponibilita)
         </td>
         <td>
