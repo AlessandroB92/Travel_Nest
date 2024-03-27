@@ -1,5 +1,16 @@
 ﻿﻿@{
     var authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+    int userId = 0;
+    int adminId = 0;
+    if (authCookie != null)
+    {
+        var ticket = FormsAuthentication.Decrypt(authCookie.Value);
+        if (!string.IsNullOrEmpty(ticket.UserData))
+        {
+            userId = Convert.ToInt32(ticket.UserData);
+            adminId = Convert.ToInt32(ticket.UserData);
+        }
+    }
 }
 
 <!DOCTYPE html>
@@ -33,11 +44,14 @@
                 @if (authCookie != null)
                 {
                     <ul class="navbar-nav">
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
+                        {
+                            <li>@Html.ActionLink("Profilo", "Edit", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>
+                        }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
-                            <li>@Html.ActionLink("Gestisci Alloggi", "Index", "Alloggi", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Gestione Alloggi", "Index", "Alloggi", new { id = userId }, new { @class = "nav-link" })</li>
                         }
-                        <li>
                         <li class="text-white fs-5 mx-2">Welcome: <span class="fw-bold text-success fs-4"> @User.Identity.Name </span></li>
                         <li>
                             <form action="@Url.Action("Logout", "Login")" method="post">

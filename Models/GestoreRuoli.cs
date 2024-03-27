@@ -19,7 +19,7 @@ namespace Travel_Nest.Models
                 {
                     if (!IsUserInRole(username, roleName))
                     {
-                        var user = db.Utenti.FirstOrDefault(u => u.Nome == username);
+                        var user = db.Utenti.FirstOrDefault(u => u.Email == username);
                         var admin = db.Admin.FirstOrDefault(a => a.Nome == username);
 
                         if (user != null)
@@ -61,7 +61,7 @@ namespace Travel_Nest.Models
         {
             var roles = new string[] { };
 
-            var userRole = db.Utenti.FirstOrDefault(u => u.Nome == username)?.Ruolo;
+            var userRole = db.Utenti.FirstOrDefault(u => u.Email == username)?.Ruolo;
             if (userRole != null)
             {
                 roles = new string[] { userRole };
@@ -83,7 +83,7 @@ namespace Travel_Nest.Models
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            var userRole = db.Utenti.FirstOrDefault(u => u.Nome == username)?.Ruolo;
+            var userRole = db.Utenti.FirstOrDefault(u => u.Email == username)?.Ruolo;
             if (userRole != null && userRole.Equals(roleName, StringComparison.OrdinalIgnoreCase))
             {
                 return true;
