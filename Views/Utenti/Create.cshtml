@@ -8,13 +8,13 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="login" class="container d-flex align-items-center py-5 bg-light rounded-3" style="height: 430px; width:350px; margin:100px auto;">
+    <div id="login" class="container d-flex align-items-center py-3 bg-light rounded-3" style="height: 430px; width:350px; margin:100px auto;">
         <div class="container d-flex flex-column">
             <h2 class="text-center py-3 rounded-3">Registrazione</h2>
             <div class="form-group d-flex align-items-center mb-3">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <i class="fa-solid fa-user" style="color: #373737; margin-right:5px;"></i>
-                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome" , style = "margin-right:5px;" } })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", placeholder = "Nome", style = "margin-right:5px;" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
                 @Html.EditorFor(model => model.Cognome, new { htmlAttributes = new { @class = "form-control", placeholder = "Cognome" } })
                 @Html.ValidationMessageFor(model => model.Cognome, "", new { @class = "text-danger" })
@@ -28,7 +28,8 @@
 
             <div class="form-group d-flex align-items-center mb-3">
                 <i class="fa-solid fa-key" style="color: #373737; margin-right:5px;"></i>
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Password" } })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "Password", @id = "password-input" } })
+                <span id="toggle-password" class="fa-solid fa-eye" style="color: #373737; margin-left: -30px; cursor: pointer;"></span>
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
 
@@ -38,7 +39,7 @@
 
             <div class="form-group d-flex flex-column align-items-center justify-content-center mb-3">
                 <div>
-                    <input type="submit" value="Create" class="btn btn-primary mb-4" />
+                    <input type="submit" value="Registrati" class="btn btn-primary mb-4" />
                 </div>
             </div>
         </div>
@@ -48,4 +49,20 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $('#toggle-password').click(function () {
+                var passwordInput = $('#password-input');
+                var type = passwordInput.attr('type');
+                if (type === 'password') {
+                    passwordInput.attr('type', 'text');
+                    $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+                } else {
+                    passwordInput.attr('type', 'password');
+                    $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+                }
+            });
+        });
+    </script>
 }

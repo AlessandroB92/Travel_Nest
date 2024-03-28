@@ -34,7 +34,7 @@
 
             <div class="form-group d-flex align-items-center mb-3 justify-content-around">
                 <i class="fa-solid fa-euro-sign" style="color: #373737; width: 12px;"></i>
-                @Html.EditorFor(model => model.PrezzoPerNotte, new { htmlAttributes = new { @class = "form-control", placeholder = "Prezzo Per Notte" } })
+                @Html.EditorFor(model => model.PrezzoPerNotte, new { htmlAttributes = new { @class = "form-control", placeholder = "Prezzo Per Notte", type = "number" } })
                 @Html.ValidationMessageFor(model => model.PrezzoPerNotte, "", new { @class = "text-danger" })
             </div>
 

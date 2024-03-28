@@ -39,20 +39,21 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
                 @if (authCookie != null)
                 {
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                         {
-                            <li>@Html.ActionLink("Profilo", "Edit", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li>
+                                <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"> <i class="fa-solid fa-user" style="color: white; margin-right:5px;"></i></a>
+                            </li>
                         }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
                             <li>@Html.ActionLink("Gestione Alloggi", "Index", "Alloggi", new { id = userId }, new { @class = "nav-link" })</li>
                         }
-                        <li class="text-white fs-5 mx-2">Welcome: <span class="fw-bold text-success fs-4"> @User.Identity.Name </span></li>
+                        <li class="d-flex align-items-center text-white me-2"> @User.Identity.Name </li>
                         <li>
                             <form action="@Url.Action("Logout", "Login")" method="post">
                                 @Html.AntiForgeryToken()
