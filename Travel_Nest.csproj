@@ -358,6 +358,7 @@
     <Content Include="Views\Utenti\Edit.cshtml" />
     <Content Include="Views\Utenti\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Alloggi\CaricaImmagine.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

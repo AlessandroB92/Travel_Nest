@@ -1,0 +1,18 @@
+﻿@model Travel_Nest.Models.Alloggi
+
+@{
+    ViewBag.Title = "Carica Immagine";
+}
+
+@using (Html.BeginForm("CaricaImmagine", "Alloggi", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(model => model.IDAlloggio)
+
+<div id="login" class="container d-flex flex-column align-items-center justify-content-center my-5 bg-light rounded-3" style="width: 450px; height: 480px;">
+    <h2 class="text-center mt-5">Carica Immagine per: <br /> @Model.NomeAlloggio</h2>
+    <label for="file" class="fw-bold fs-4 my-5">Seleziona un'immagine:</label>
+    <input type="file" name="file" id="file" />
+    <button type="submit" class="btn btn-primary my-5">Carica Immagine</button>
+</div>
+
+}

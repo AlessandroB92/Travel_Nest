@@ -8,12 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Travel_Nest.Models;
+using System.IO;
 
 namespace Travel_Nest.Controllers
 {
     public class AlloggiController : Controller
     {
-        private TravelDb db = new TravelDb();
+        private readonly TravelDb db = new TravelDb();
 
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
@@ -106,5 +107,45 @@ namespace Travel_Nest.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult CaricaImmagine(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Alloggi alloggio = db.Alloggi.Find(id);
+            if (alloggio == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(alloggio);
+        }
+
+        [HttpPost]
+        public ActionResult CaricaImmagine(int id, HttpPostedFileBase file)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                byte[] imageData;
+                using (var binaryReader = new BinaryReader(file.InputStream))
+                {
+                    imageData = binaryReader.ReadBytes(file.ContentLength);
+                }
+
+                db.ImmaginiAlloggi.Add(new ImmaginiAlloggi
+                {
+                    IDAlloggio = id,
+                    URLImmagine = file.FileName,
+                    FileData = imageData
+                });
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", new { id });
+        }
+
     }
 }

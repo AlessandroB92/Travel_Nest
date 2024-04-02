@@ -16,5 +16,7 @@ namespace Travel_Nest.Models
 
         [StringLength(255)]
         public string URLImmagine { get; set; }
+
+        public byte[] FileData { get; set; }
     }
 }

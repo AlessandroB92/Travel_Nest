@@ -9,9 +9,13 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="login" class="container d-flex align-items-center py-5 bg-light rounded-3" style="height: 450px; width:430px; margin:100px auto;">
+    <div id="login" class="container d-flex align-items-center py-5 bg-light rounded-3" style="height: 500px; width:430px; margin:100px auto;">
         <div class="container">
             <h2 class="text-center py-3 rounded-3">Modifica Alloggio</h2>
+            <div class="text-center mb-3">
+                @Html.ActionLink("Carica Immagine", "CaricaImmagine", "Alloggi", new { id = Model.IDAlloggio }, new { @class = "btn btn-primary" })
+            </div>
+
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.IDAlloggio)
 
@@ -41,8 +45,8 @@
 
             <div class="form-groupd d-flex flex-column align-items-center justify-content-around">
                 @Html.LabelFor(model => model.Disponibilita, "Disponibile", htmlAttributes: new { @class = "control-label mb-2" })
-                    @Html.EditorFor(model => model.Disponibilita)
-                    @Html.ValidationMessageFor(model => model.Disponibilita, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Disponibilita)
+                @Html.ValidationMessageFor(model => model.Disponibilita, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group d-flex flex-column align-items-center justify-content-center">
@@ -53,14 +57,11 @@
                     @Html.ActionLink("Back to List", "Index")
                 </div>
             </div>
+
         </div>
     </div>
 }
 
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
