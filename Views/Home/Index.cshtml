@@ -3,14 +3,48 @@
         <div id="hero" class="container bg-dark opacity-75 text-center w-50 h-50 m-auto d-flex flex-column align-items-center rounded-3">
             <div class="container m-auto">
                 <h1 class="mb-4 text-white">Benvenuto in Travel Nest!</h1>
-                <h3 class="mb-2 text-white">Qui portai scegliere il nido per le tue prossime vacanze</h3>
-                <h4 class="mb-2 text-white">Dai un occhiata alle nostre proposte e prenota subito</h4>
+                <h3 class="mb-2 text-white">Qui potrai scegliere il nido per le tue prossime vacanze</h3>
+                <h4 class="mb-2 text-white">Dai un'occhiata alle nostre proposte e prenota subito</h4>
             </div>
         </div>
     </section>
     <section class="bg-light">
         <div class="container">
-            <h5></h5>
+            <h2>Alloggi Disponibili</h2>
+            <div class="row">
+                @foreach (var alloggio in Model)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div id="carouselExampleIndicators-@alloggio.Alloggio.IDAlloggio" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    @for (var i = 0; i < alloggio.Immagini.Count; i++)
+                                    {
+                                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                                            <img src="data:image;base64,@Convert.ToBase64String(alloggio.Immagini[i].FileData)" class="d-block w-100" alt="Immagine Alloggio">
+                                        </div>
+                                    }
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators-@alloggio.Alloggio.IDAlloggio" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators-@alloggio.Alloggio.IDAlloggio" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@alloggio.Alloggio.NomeAlloggio</h5>
+                                <p class="card-text">@alloggio.Alloggio.Descrizione</p>
+                                <p class="card-text">Città: @alloggio.Alloggio.Citta</p>
+                                <p class="card-text">Prezzo per notte: @alloggio.Alloggio.PrezzoPerNotte</p>
+                                <p class="card-text">Disponibilità: @(alloggio.Alloggio.Disponibilita ? "Disponibile" : "Non disponibile")</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     </section>
 </main>
