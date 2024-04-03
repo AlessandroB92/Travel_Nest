@@ -125,6 +125,7 @@ namespace Travel_Nest.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult CaricaImmagine(int id, HttpPostedFileBase file)
         {
             if (file != null && file.ContentLength > 0)
@@ -146,6 +147,27 @@ namespace Travel_Nest.Controllers
 
             return RedirectToAction("Index", new { id });
         }
+
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> EliminaImmagine(int? idAlloggio, int? idImmagine)
+        {
+            if (idAlloggio == null || idImmagine == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ImmaginiAlloggi immagine = await db.ImmaginiAlloggi.FindAsync(idImmagine);
+            if (immagine == null)
+            {
+                return HttpNotFound();
+            }
+
+            db.ImmaginiAlloggi.Remove(immagine);
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("Edit", new { id = idAlloggio });
+        }
+
 
     }
 }
