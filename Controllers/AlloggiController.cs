@@ -31,6 +31,7 @@ namespace Travel_Nest.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Create([Bind(Include = "IDAlloggio,NomeAlloggio,Descrizione,Citta,PrezzoPerNotte,Disponibilita")] Alloggi alloggi)
         {
             if (ModelState.IsValid)
@@ -107,7 +108,7 @@ namespace Travel_Nest.Controllers
             }
             base.Dispose(disposing);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult CaricaImmagine(int? id)
         {
             if (id == null)

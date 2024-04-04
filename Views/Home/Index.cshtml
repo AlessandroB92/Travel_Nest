@@ -8,14 +8,14 @@
             </div>
         </div>
     </section>
-    <section class="bg-light">
+    <section>
         <div class="container">
-            <h2>Alloggi Disponibili</h2>
+            <h2 class=" py-5 text-center">Visita i nostri alloggi</h2>
             <div class="row">
                 @foreach (var alloggio in Model)
                 {
                     <div class="col-md-4 mb-4">
-                        <div class="card">
+                        <div id="login" class="card">
                             <div id="carouselExampleIndicators-@alloggio.Alloggio.IDAlloggio" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     @for (var i = 0; i < alloggio.Immagini.Count; i++)

@@ -16,6 +16,9 @@
             @Html.DisplayNameFor(model => model.NomeAlloggio)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Descrizione)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Citta)
         </th>
         <th>
@@ -33,9 +36,12 @@
             @Html.DisplayFor(modelItem => item.NomeAlloggio)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Citta)
+            @Html.DisplayFor(modelItem => item.Descrizione)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Citta)
+        </td>
+        <td class="text-center">
             @Html.DisplayFor(modelItem => item.PrezzoPerNotte) &euro;
         </td>
         <td class="text-center">
