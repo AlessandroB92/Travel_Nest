@@ -146,7 +146,7 @@ namespace Travel_Nest.Controllers
                 db.SaveChanges();
             }
 
-            return RedirectToAction("Index", new { id });
+            return RedirectToAction("Edit", new { id });
         }
 
         [Authorize(Roles = "Admin")]
