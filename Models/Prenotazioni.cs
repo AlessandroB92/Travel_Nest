@@ -17,10 +17,10 @@ namespace Travel_Nest.Models
         public int? IDAlloggio { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? DataCheckIn { get; set; }
+        public DateTime DataCheckIn { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? DataCheckOut { get; set; }
+        public DateTime DataCheckOut { get; set; }
 
         [StringLength(20)]
         public string StatoPrenotazione { get; set; }

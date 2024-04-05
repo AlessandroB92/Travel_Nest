@@ -44,17 +44,19 @@
                         <li>@Html.ActionLink("Lista Utenti", "Index", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Gestione Alloggi", "Index", "Alloggi", new { id = userId }, new { @class = "nav-link" })</li>
                     }
-                            </ul>
+                </ul>
                 @if (authCookie != null)
                 {
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                         {
+                            <li>@Html.ActionLink("Le mie Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Prenota", "NuovaPrenotazione", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
                             <li>
                                 <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"> <i class="fa-solid fa-user" style="color: white; margin-right:5px;"></i></a>
                             </li>
                         }
-                        
+
                         <li class="d-flex align-items-center text-white me-2"> @User.Identity.Name </li>
                         <li>
                             <form action="@Url.Action("Logout", "Login")" method="post">
@@ -87,9 +89,9 @@
     <div style="height:auto;">
         @RenderBody()
     </div>
-        <footer class="text-center py-2 bg-dark text-white m-auto">
-            <p>&copy; @DateTime.Now.Year - Travel Nest SRL</p>
-        </footer>
+    <footer class="text-center py-2 bg-dark text-white m-auto">
+        <p>&copy; @DateTime.Now.Year - Travel Nest SRL</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

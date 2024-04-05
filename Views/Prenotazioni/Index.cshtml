@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Travel_Nest.Models.Prenotazioni>
+
+@{
+    ViewBag.Title = "Elenco Prenotazioni";
+}
+
+<h2>Elenco delle tue prenotazioni</h2>
+
+<table class="table">
+    <tr>
+        <th>ID Prenotazione</th>
+        <th>ID Alloggio</th>
+        <th>Data Check-In</th>
+        <th>Data Check-Out</th>
+        <th>Stato Prenotazione</th>
+        <th>Azioni</th>
+    </tr>
+    @foreach (var prenotazione in Model)
+    {
+        <tr>
+            <td>@prenotazione.IDPrenotazione</td>
+            <td>@prenotazione.IDAlloggio</td>
+            <td>@prenotazione.DataCheckIn.ToShortDateString()</td>
+            <td>@prenotazione.DataCheckOut.ToShortDateString()</td>
+            <td>@prenotazione.StatoPrenotazione</td>
+            <td>
+                @Html.ActionLink("Dettagli", "Dettagli", new { id = prenotazione.IDPrenotazione })
+                @Html.ActionLink("Modifica", "Modifica", new { id = prenotazione.IDPrenotazione })
+                @Html.ActionLink("Elimina", "ConfermaEliminazione", new { id = prenotazione.IDPrenotazione })
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Nuova Prenotazione", "NuovaPrenotazione")
+</p>
