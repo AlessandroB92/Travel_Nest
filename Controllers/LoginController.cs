@@ -27,13 +27,11 @@ namespace back_end_s7.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Effettua il login
                 if (dbContext.Admin.Any(a => a.Nome == model.Nome && a.Password == model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.Nome, true);
-                    // Ottenere l'ID dell'utente e memorizzarlo nei cookie
                     var adminId = dbContext.Admin.FirstOrDefault(a => a.Nome == model.Nome)?.IDAdmin;
-                    var userData = adminId.ToString(); // Converti l'ID in stringa
+                    var userData = adminId.ToString();
                     var ticket = new FormsAuthenticationTicket(1, model.Nome, DateTime.Now, DateTime.Now.AddMinutes(30), true, userData);
                     var encryptedTicket = FormsAuthentication.Encrypt(ticket);
                     var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
@@ -43,9 +41,8 @@ namespace back_end_s7.Controllers
                 else if (dbContext.Utenti.Any(u => u.Email == model.Nome && u.Password == model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.Nome, true);
-                    // Ottenere l'ID dell'utente e memorizzarlo nei cookie
                     var userId = dbContext.Utenti.FirstOrDefault(u => u.Email == model.Nome).IDUtente;
-                    var userData = userId.ToString(); // Converti l'ID in stringa
+                    var userData = userId.ToString();
                     var ticket = new FormsAuthenticationTicket(1, model.Nome, DateTime.Now, DateTime.Now.AddMinutes(30), true, userData);
                     var encryptedTicket = FormsAuthentication.Encrypt(ticket);
                     var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
