@@ -10,7 +10,7 @@
     </section>
     <section>
         <div class="container">
-            <h2 class=" py-5 text-center">Visita i nostri alloggi</h2>
+            <h2 class=" py-5 text-center" style = "font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">Visita i nostri alloggi</h2>
             <div class="row">
                 @foreach (var alloggio in Model)
                 {
@@ -21,7 +21,7 @@
                                     @for (var i = 0; i < alloggio.Immagini.Count; i++)
                                     {
                                         <div class="carousel-item @(i == 0 ? "active" : "")">
-                                            <img src="data:image;base64,@Convert.ToBase64String(alloggio.Immagini[i].FileData)" class="d-block w-100" alt="Immagine Alloggio">
+                                            <img src="data:image;base64,@Convert.ToBase64String(alloggio.Immagini[i].FileData)" class="d-block w-100 rounded-top-2" alt="Immagine Alloggio">
                                         </div>
                                     }
                                 </div>
@@ -34,12 +34,12 @@
                                     <span class="visually-hidden">Next</span>
                                 </button>
                             </div>
-                            <div class="card-body">
-                                <h5 class="card-title">@alloggio.Alloggio.NomeAlloggio</h5>
-                                <p class="card-text">@alloggio.Alloggio.Descrizione</p>
-                                <p class="card-text">Città: @alloggio.Alloggio.Citta</p>
-                                <p class="card-text">Prezzo per notte: @alloggio.Alloggio.PrezzoPerNotte</p>
-                                <p class="card-text">Disponibilità: @(alloggio.Alloggio.Disponibilita ? "Disponibile" : "Non disponibile")</p>
+                            <div class="card-body p-0">
+                                <h5 class="card-title bg-dark text-white p-2">@alloggio.Alloggio.NomeAlloggio</h5>
+                                <p class="card-text px-2">@alloggio.Alloggio.Descrizione</p>
+                                <p class="card-text px-2"><span class="fw-bold">Città:</span> @alloggio.Alloggio.Citta</p>
+                                <p class="card-text px-2"><span class="fw-bold">Prezzo per notte:</span> @alloggio.Alloggio.PrezzoPerNotte &euro;</p>
+                                <p class="card-text px-2 pb-3"><span class="fw-bold">Disponibilità:</span> @(alloggio.Alloggio.Disponibilita ? "Disponibile" : "Non disponibile")</p>
                             </div>
                         </div>
                     </div>

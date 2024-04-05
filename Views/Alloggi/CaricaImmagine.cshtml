@@ -13,6 +13,9 @@
     <label for="file" class="fw-bold fs-4 my-5">Seleziona un'immagine:</label>
     <input type="file" name="file" id="file" />
     <button type="submit" class="btn btn-primary my-5">Carica Immagine</button>
+    <div class="form-actions no-color text-center mb-2">
+        @Html.ActionLink("Indietro", "Edit", new { id = @Model.IDAlloggio })
+    </div>
 </div>
 
 }
