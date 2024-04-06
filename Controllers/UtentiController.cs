@@ -14,7 +14,7 @@ namespace Travel_Nest.Controllers
     public class UtentiController : Controller
     {
         private TravelDb db = new TravelDb();
-
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Index()
         {
             return View(await db.Utenti.ToListAsync());
