@@ -3,35 +3,43 @@
 @{
     ViewBag.Title = "Elenco Prenotazioni";
 }
+<div class="container py-5">
+    <h1 class="text-center my-5">Le tue prenotazioni</h1>
 
-<h2>Elenco delle tue prenotazioni</h2>
-
-<table class="table">
-    <tr>
-        <th>ID Prenotazione</th>
-        <th>ID Alloggio</th>
-        <th>Data Check-In</th>
-        <th>Data Check-Out</th>
-        <th>Stato Prenotazione</th>
-        <th>Azioni</th>
-    </tr>
-    @foreach (var prenotazione in Model)
+    @if (!Model.Any())
     {
-        <tr>
-            <td>@prenotazione.IDPrenotazione</td>
-            <td>@prenotazione.IDAlloggio</td>
-            <td>@prenotazione.DataCheckIn.ToShortDateString()</td>
-            <td>@prenotazione.DataCheckOut.ToShortDateString()</td>
-            <td>@prenotazione.StatoPrenotazione</td>
-            <td>
-                @Html.ActionLink("Dettagli", "Dettagli", new { id = prenotazione.IDPrenotazione })
-                @Html.ActionLink("Modifica", "Modifica", new { id = prenotazione.IDPrenotazione })
-                @Html.ActionLink("Elimina", "ConfermaEliminazione", new { id = prenotazione.IDPrenotazione })
-            </td>
-        </tr>
+        <h3 class="text-center text-danger mb-5">Al momento non hai nessuna prenotazione.</h3>
     }
-</table>
+    else
+    {
+        <table class="table">
+            <tr>
+                <th>ID Prenotazione</th>
+                <th>ID Alloggio</th>
+                <th>Data Check-In</th>
+                <th>Data Check-Out</th>
+                <th>Stato Prenotazione</th>
+                <th>Azioni</th>
+            </tr>
+            @foreach (var prenotazione in Model)
+            {
+                <tr>
+                    <td>@prenotazione.IDPrenotazione</td>
+                    <td>@prenotazione.IDAlloggio</td>
+                    <td>@prenotazione.DataCheckIn.ToShortDateString()</td>
+                    <td>@prenotazione.DataCheckOut.ToShortDateString()</td>
+                    <td>@prenotazione.StatoPrenotazione</td>
+                    <td>
+                        @Html.ActionLink("Dettagli", "Dettagli", new { id = prenotazione.IDPrenotazione })
+                        @Html.ActionLink("Modifica", "Modifica", new { id = prenotazione.IDPrenotazione })
+                        @Html.ActionLink("Elimina", "ConfermaEliminazione", new { id = prenotazione.IDPrenotazione })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    <div class="container d-flex justify-content-center my-5">
+        <button onclick="location.href='@Url.Action("NuovaPrenotazione")'" class="btn btn-primary">Nuova Prenotazione</button>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Nuova Prenotazione", "NuovaPrenotazione")
-</p>

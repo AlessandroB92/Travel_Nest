@@ -38,9 +38,10 @@
 
             @Html.HiddenFor(model => model.Ruolo)
 
-            <div class="form-group d-flex flex-column align-items-center justify-content-center mb-3">
+            <div class="form-group d-flex flex-column align-items-center justify-content-center my-3">
                 <div>
-                    <input type="submit" value="Save" class="btn btn-success mb-3" />
+                    <input type="submit" value="Save" class="btn btn-success me-3" />
+                    @Html.ActionLink("Indietro", "Index")
                 </div>
             </div>
         </div>
