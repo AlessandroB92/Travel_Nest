@@ -40,6 +40,7 @@
                                 <p class="card-text px-2"><span class="fw-bold">Città:</span> @alloggio.Alloggio.Citta</p>
                                 <p class="card-text px-2"><span class="fw-bold">Prezzo per notte:</span> @alloggio.Alloggio.PrezzoPerNotte &euro;</p>
                                 <p class="card-text px-2 pb-3"><span class="fw-bold">Disponibilità:</span> @(alloggio.Alloggio.Disponibilita ? "Disponibile" : "Non disponibile")</p>
+                                @Html.ActionLink("Dettagli", "Dettagli", "Alloggi", new { id = alloggio.Alloggio.IDAlloggio }, new { @class = "btn btn-primary" })
                             </div>
                         </div>
                     </div>

@@ -29,6 +29,23 @@ namespace Travel_Nest.Controllers
             return View();
         }
 
+        public ActionResult Dettagli(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Alloggi alloggio = db.Alloggi.Find(id);
+            if (alloggio == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(alloggio);
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -115,13 +132,11 @@ namespace Travel_Nest.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
             Alloggi alloggio = db.Alloggi.Find(id);
             if (alloggio == null)
             {
                 return HttpNotFound();
             }
-
             return View(alloggio);
         }
 
@@ -145,7 +160,6 @@ namespace Travel_Nest.Controllers
                 });
                 db.SaveChanges();
             }
-
             return RedirectToAction("Edit", new { id });
         }
 
@@ -168,7 +182,5 @@ namespace Travel_Nest.Controllers
 
             return RedirectToAction("Edit", new { id = idAlloggio });
         }
-
-
     }
 }

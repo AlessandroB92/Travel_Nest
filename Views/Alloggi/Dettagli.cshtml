@@ -1,0 +1,59 @@
+﻿@model Travel_Nest.Models.Alloggi
+
+@{
+    ViewBag.Title = "Dettagli Alloggio";
+}
+
+<h2>@Model.NomeAlloggio</h2>
+<div class="row w-100">
+    <div class="col-lg-6 p-0">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" style="width: 100%; height: 100%;">
+                @foreach (var immagine in Model.Immagini)
+                {
+                    <div class="carousel-item @(immagine == Model.Immagini.First() ? "active" : "")" style="width: 100%; height: 100%;">
+                        <img src="data:image;base64,@Convert.ToBase64String(immagine.FileData)" class="d-block w-100 h-100" alt="Immagine Alloggio">
+                    </div>
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="col-lg-6 p-0 bg-light">
+        <div>
+            <dl class="dl-horizontal m-4">
+                <dt>Descrizione:</dt>
+                <dd>@Model.Descrizione</dd>
+                <dt>Città:</dt>
+                <dd>@Model.Citta</dd>
+                <dt>Prezzo per notte:</dt>
+                <dd>@Model.PrezzoPerNotte &euro;</dd>
+                <dt>Disponibilità:</dt>
+                <dd>@(Model.Disponibilita ? "Disponibile" : "Non disponibile")</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a href="@Url.Action("NuovaPrenotazione", "Prenotazioni", new { idAlloggio = Model.IDAlloggio })" class="btn btn-primary">Prenota</a>
+    }
+    else
+    {
+        <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Effettua il login per prenotare</a>
+    }
+</p>
+
+<p>
+    @Html.ActionLink("Torna Home", "Index", "Home")
+</p>

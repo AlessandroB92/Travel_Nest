@@ -48,7 +48,7 @@ namespace Travel_Nest.Controllers
             return View(prenotazione);
         }
 
-        public ActionResult NuovaPrenotazione()
+        public ActionResult NuovaPrenotazione(int idAlloggio)
         {
             if (!User.Identity.IsAuthenticated)
             {
@@ -62,20 +62,11 @@ namespace Travel_Nest.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var alloggi = db.Alloggi.ToList();
-
-            var alloggiItems = alloggi.Select(a => new SelectListItem
-            {
-                Value = a.IDAlloggio.ToString(),
-                Text = a.NomeAlloggio
-            });
-
-            var nuovaPrenotazione = new Prenotazioni { IDUtente = userId };
-
-            ViewBag.AlloggiItems = alloggiItems;
+            var nuovaPrenotazione = new Prenotazioni { IDUtente = userId, IDAlloggio = idAlloggio };
 
             return View(nuovaPrenotazione);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

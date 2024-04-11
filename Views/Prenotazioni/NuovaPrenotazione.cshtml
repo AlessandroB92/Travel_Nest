@@ -8,45 +8,36 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.IDUtente)
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDUtente)
+        @Html.HiddenFor(model => model.IDAlloggio) <!-- Campo nascosto per l'ID dell'alloggio -->
+        <!-- Campo Data Check-in -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataCheckIn, "Check-in", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" id="DataCheckIn" name="DataCheckIn" class="form-control" />
+                @Html.ValidationMessageFor(model => model.DataCheckIn, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.IDAlloggio, "Seleziona Alloggio", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.IDAlloggio, ViewBag.AlloggiItems as IEnumerable<SelectListItem>, "-- Seleziona un alloggio --", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.IDAlloggio, "", new { @class = "text-danger" })
+        <!-- Campo Data Check-out -->
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataCheckOut, "Check-out", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" id="DataCheckOut" name="DataCheckOut" class="form-control" />
+                @Html.ValidationMessageFor(model => model.DataCheckOut, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!-- Altri campi del form per la prenotazione -->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Prenota" class="btn btn-primary" />
+            </div>
         </div>
     </div>
-
-
-    <!-- Campo Data Check-in -->
-    <div class="form-group">
-        @Html.LabelFor(model => model.DataCheckIn, "Check-in", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="date" id="DataCheckIn" name="DataCheckIn" class="form-control" />
-            @Html.ValidationMessageFor(model => model.DataCheckIn, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <!-- Campo Data Check-out -->
-    <div class="form-group">
-        @Html.LabelFor(model => model.DataCheckOut, "Check-out", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="date" id="DataCheckOut" name="DataCheckOut" class="form-control" />
-            @Html.ValidationMessageFor(model => model.DataCheckOut, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <!-- Altri campi del form per la prenotazione -->
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Prenota" class="btn btn-primary" />
-        </div>
-    </div>
-</div>
 }
 
 @section Scripts {
