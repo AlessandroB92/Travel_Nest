@@ -4,10 +4,10 @@
     ViewBag.Title = "Dettagli Alloggio";
 }
 
-<h2>@Model.NomeAlloggio</h2>
-<div class="row w-100">
+<h2 class="m-3 fw-bold ">@Model.NomeAlloggio</h2>
+<div class="row w-100 m-auto">
     <div class="col-lg-6 p-0">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 450px">
             <div class="carousel-inner" style="width: 100%; height: 100%;">
                 @foreach (var immagine in Model.Immagini)
                 {
@@ -39,21 +39,20 @@
                 <dt>Disponibilità:</dt>
                 <dd>@(Model.Disponibilita ? "Disponibile" : "Non disponibile")</dd>
             </dl>
+        <p class="m-4">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="@Url.Action("NuovaPrenotazione", "Prenotazioni", new { idAlloggio = Model.IDAlloggio })" class="btn btn-primary">Prenota</a>
+            }
+            else
+            {
+                <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Effettua il login per prenotare</a>
+            }
+        </p>
         </div>
     </div>
 </div>
 
-<p>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <a href="@Url.Action("NuovaPrenotazione", "Prenotazioni", new { idAlloggio = Model.IDAlloggio })" class="btn btn-primary">Prenota</a>
-    }
-    else
-    {
-        <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Effettua il login per prenotare</a>
-    }
-</p>
-
-<p>
-    @Html.ActionLink("Torna Home", "Index", "Home")
-</p>
+<div class="container d-flex justify-content-center my-4">
+    @Html.ActionLink("Torna alla Home", "Index", "Home", new { @class = "btn btn-default"})
+</div>

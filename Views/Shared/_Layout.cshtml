@@ -55,7 +55,7 @@
                         @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                         {
                             <li>
-                                <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"> <i class="fa-solid fa-user" style="color: white; margin-right:5px;"></i></a>
+                                <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"> <i class="fa-solid fa-user"></i></a>
                             </li>
                         }
 
