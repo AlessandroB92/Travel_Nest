@@ -76,12 +76,12 @@
                         <li>
                             <form action="@Url.Action("Create", "Utenti")" method="get">
                                 @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-outline-primary text-white fw-bold mx-2">Register</button>
+                                <button type="submit" class="btn btn-outline-primary text-white fw-bold mx-2">Registrati</button>
                             </form>
                         </li>
                         <li>
                             <form action="@Url.Action("Index", "Login")" method="get">
-                                <button type="submit" class="btn btn-outline-success text-white fw-bold">Login</button>
+                                <button type="submit" class="btn btn-outline-success text-white fw-bold">Accedi</button>
                             </form>
                         </li>
                     </ul>
@@ -89,7 +89,7 @@
             </div>
         </div>
     </nav>
-    <div style="height:auto;">
+    <div>
         @RenderBody()
     </div>
     <footer class="text-center py-2 text-white m-auto">

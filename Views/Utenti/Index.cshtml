@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h1 class="text-center fw-bold my-5">Utenti Registrati</h1>
+<h1 class="text-center fw-bold my-5 text-white">Utenti Registrati</h1>
 <div class="container" style="height:100vh;">
-    <table class="table">
+    <table class="table table-hover w-50 m-auto">
         <tr class="table-dark fs-4">
             <th>
                 @Html.DisplayNameFor(model => model.Nome)
@@ -16,9 +16,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th class="text-center">
-                @Html.DisplayNameFor(model => model.Password)
             </th>
         </tr>
 
@@ -33,9 +30,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Password)
                 </td>
             </tr>
         }

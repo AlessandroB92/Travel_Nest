@@ -2,15 +2,17 @@
     <section id="banner" class="d-flex">
         <div id="hero" class="container text-center w-50 h-50 m-auto d-flex flex-column align-items-center rounded-3">
             <div class="container m-auto">
-                <h1 class="mb-4 text-white">Benvenuto in Travel Nest!</h1>
-                <h3 class="mb-2 text-white">Qui potrai scegliere il nido per le tue prossime vacanze</h3>
+                <h1 class="mb-4 text-white" style="font-family: 'Satisfy', cursive; font-weight: bold;">Benvenuto in Travel Nest</h1>
+                <h3 class="mt-3 text-white">Qui potrai scegliere il nido per le tue prossime vacanze</h3>
                 <h4 class="mb-2 text-white">Dai un'occhiata alle nostre proposte e prenota subito</h4>
             </div>
         </div>
     </section>
     <section>
         <div class="container">
-            <h2 class=" my-5 py-4 rounded-5 w-75 m-auto text-center bg-body-secondary" style="font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">Visita i nostri alloggi</h2>
+            <div class="d-flex align-items-center">
+                <h2 class="my-3 text-white rounded-5 w-50 m-auto text-center" style="font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">Visita i nostri alloggi<img style="width: 150px; margin-bottom: 26px; margin-left: 10px;" src="~/Content/Images/aereo.png" /></h2>
+            </div>
             <div class="row">
                 @foreach (var alloggio in Model)
                 {
@@ -35,8 +37,8 @@
                                 </button>
                             </div>
                             <div class="card-body p-0">
-                                <h5 class="card-title bg-dark text-white p-2">@alloggio.Alloggio.NomeAlloggio</h5>
-                                <p class="card-text px-2">@alloggio.Alloggio.Descrizione</p>
+                                <h5 class="card-title text-white p-2" style="background-color: #77ABF7; font-family: 'Satisfy', cursive; font-weight: bold;">@alloggio.Alloggio.NomeAlloggio</h5>
+                                <p class="card-text px-2 pt-3 fw-bold">@alloggio.Alloggio.Descrizione</p>
                                 <p class="card-text px-2"><span class="fw-bold">Città:</span> @alloggio.Alloggio.Citta</p>
                                 <p class="card-text px-2"><span class="fw-bold">Prezzo per notte:</span> @alloggio.Alloggio.PrezzoPerNotte &euro;</p>
                                 <p class="card-text px-2"><span class="fw-bold">Disponibilità:</span> @(alloggio.Alloggio.Disponibilita ? "Disponibile" : "Non disponibile")</p>
