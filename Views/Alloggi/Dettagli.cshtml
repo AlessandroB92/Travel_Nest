@@ -4,7 +4,7 @@
     ViewBag.Title = "Dettagli Alloggio";
 }
 
-<h2 class="m-3 fw-bold ">@Model.NomeAlloggio</h2>
+<h2 class="p-4 m-0 fw-bold bg-dark text-white">@Model.NomeAlloggio</h2>
 <div class="row w-100 m-auto">
     <div class="col-lg-6 p-0">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 450px">
@@ -39,20 +39,21 @@
                 <dt>Disponibilità:</dt>
                 <dd>@(Model.Disponibilita ? "Disponibile" : "Non disponibile")</dd>
             </dl>
-        <p class="m-4">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a href="@Url.Action("NuovaPrenotazione", "Prenotazioni", new { idAlloggio = Model.IDAlloggio })" class="btn btn-primary">Prenota</a>
-            }
-            else
-            {
-                <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Effettua il login per prenotare</a>
-            }
-        </p>
+            <p class="m-4">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button onclick="window.location.href='@Url.Action("NuovaPrenotazione", "Prenotazioni", new { idAlloggio = Model.IDAlloggio })'" class="btn btn-primary">Prenota</button>
+                }
+                else
+                {
+                    <button onclick="window.location.href='@Url.Action("Index", "Login")'" class="btn btn-primary">Effettua il login per prenotare</button>
+                }
+
+            </p>
         </div>
     </div>
 </div>
 
 <div class="container d-flex justify-content-center my-4">
-    @Html.ActionLink("Torna alla Home", "Index", "Home", new { @class = "btn btn-default"})
+    <button onclick="window.location.href='@Url.Action("Index", "Home")'" class="btn btn-default fw-bold text-white">Torna alla Home</button>
 </div>

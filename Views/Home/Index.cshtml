@@ -10,12 +10,12 @@
     </section>
     <section>
         <div class="container">
-            <h2 id="scrollMessage" class=" py-5 text-center" style="font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">Visita i nostri alloggi</h2>
+            <h2 class=" my-5 py-4 rounded-5 w-75 m-auto text-center bg-body-secondary" style="font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">Visita i nostri alloggi</h2>
             <div class="row">
                 @foreach (var alloggio in Model)
                 {
                     <div class="col-md-4 mb-4">
-                        <div id="login" class="card">
+                        <div id="login" class="bg-light rounded-2">
                             <div id="carouselExampleIndicators-@alloggio.Alloggio.IDAlloggio" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
                                     @for (var i = 0; i < alloggio.Immagini.Count; i++)
@@ -40,7 +40,7 @@
                                 <p class="card-text px-2"><span class="fw-bold">Città:</span> @alloggio.Alloggio.Citta</p>
                                 <p class="card-text px-2"><span class="fw-bold">Prezzo per notte:</span> @alloggio.Alloggio.PrezzoPerNotte &euro;</p>
                                 <p class="card-text px-2"><span class="fw-bold">Disponibilità:</span> @(alloggio.Alloggio.Disponibilita ? "Disponibile" : "Non disponibile")</p>
-                                @Html.ActionLink("Scopri di Più", "Dettagli", "Alloggi", new { id = alloggio.Alloggio.IDAlloggio }, new { @class = "btn btn-primary m-2" })
+                                <button onclick="window.location.href='@Url.Action("Dettagli", "Alloggi", new { id = alloggio.Alloggio.IDAlloggio })'" class="btn btn-outline-primary m-2 mb-3">Scopri di Più</button>
                             </div>
                         </div>
                     </div>

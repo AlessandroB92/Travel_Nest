@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #c4f6ff;
+    background-color: #77ABF7;
     font-family: "Roboto", sans-serif;
 }
 
@@ -22,16 +22,24 @@
 }
 
 button {
-    transition: all 0.5s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
     button:active {
         transform: translateY(7px);
         box-shadow: 0 0 0 0 rgba(0,0,0,0.5);
     }
+
 #mynav {
     background: rgb(33,37,41);
     background: -moz-linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(42,51,62,1) 28%, rgba(66,88,119,1) 64%, rgba(85,117,164,1) 100%);
     background: -webkit-linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(42,51,62,1) 28%, rgba(66,88,119,1) 64%, rgba(85,117,164,1) 100%);
     background: linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(42,51,62,1) 28%, rgba(66,88,119,1) 64%, rgba(85,117,164,1) 100%);
+}
+
+footer {
+    background: rgb(33,37,41);
+    background: -moz-linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(42,51,62,1) 28%, rgba(66,88,119,1) 64%, rgba(85,117,164,1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(42,51,62,1) 28%, rgba(66,88,119,1) 64%, rgba(85,117,164,1) 100%);
+    background: linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(42,51,62,1) 28%, rgba(66,88,119,1) 64%, rgba(85,117,164,1) 100%);
 }
