@@ -12,7 +12,7 @@
     <div class="container d-flex flex-column justify-content-center align-items-center">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.IDUtente)
-        @Html.HiddenFor(model => model.IDAlloggio) <!-- Campo nascosto per l'ID dell'alloggio -->
+        @Html.HiddenFor(model => model.IDAlloggio)
         <!-- Campo Data Check-in -->
         <div class="form-group m-3 text-center">
             @Html.LabelFor(model => model.DataCheckIn, "Data Check-in", htmlAttributes: new { @class = "control-label fw-bold m-2" })

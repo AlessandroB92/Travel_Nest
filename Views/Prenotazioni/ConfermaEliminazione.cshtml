@@ -1,0 +1,75 @@
+﻿@model Travel_Nest.Models.Prenotazioni
+
+@{
+    ViewBag.Title = "Conferma Eliminazione Prenotazione";
+}
+
+
+<h2 class="text-center text-white py-3 bg-danger">Eliminazione Prenotazione</h2>
+<div id="login" class="row w-75 m-auto my-5 rounded-3">
+    <div class="col-md-6 p-4 bg-light rounded-start-3">
+        <h4>Immagini Alloggio:</h4>
+        <hr />
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 450px">
+            <div class="carousel-inner" style="width: 100%; height: 100%;">
+                @foreach (var immagine in Model.Alloggi.Immagini)
+                {
+                    <div class="carousel-item @(immagine == Model.Alloggi.Immagini.First() ? "active" : "")" style="width: 100%; height: 100%;">
+                        <img src="data:image;base64,@Convert.ToBase64String(immagine.FileData)" class="d-block w-100 h-100" alt="Immagine Alloggio">
+                    </div>
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="col-md-6 p-4 bg-light rounded-end-3">
+        <h4>Dati Alloggio:</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Nome Alloggio:
+            </dt>
+            <dd>
+                @Model.Alloggi.NomeAlloggio
+            </dd>
+
+            <dt>
+                Data Check-in:
+            </dt>
+            <dd>
+                @Model.DataCheckIn.ToShortDateString()
+            </dd>
+
+            <dt>
+                Data Check-out:
+            </dt>
+            <dd>
+                @Model.DataCheckOut.ToShortDateString()
+            </dd>
+
+            <dt>
+                Prezzo per Notte:
+            </dt>
+            <dd>
+                @Model.Alloggi.PrezzoPerNotte &euro;
+            </dd>
+        </dl>
+        @using (Html.BeginForm("Elimina", "Prenotazioni", new { id = Model.IDPrenotazione }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group my-3">
+                <input type="submit" value="Elimina" class="btn btn-danger" /> |
+                @Html.ActionLink("Annulla", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+</div>
+

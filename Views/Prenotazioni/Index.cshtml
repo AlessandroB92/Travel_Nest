@@ -3,8 +3,15 @@
 @{
     ViewBag.Title = "Elenco Prenotazioni";
 }
+
 <div class="container py-5">
     <h1 class="text-center my-5">Le tue prenotazioni</h1>
+    @if (TempData["PrenotazioneCancellata"] != null)
+    {
+        <div class="alert alert-success text-center" role="alert">
+            @TempData["PrenotazioneCancellata"]
+        </div>
+    }
 
     @if (!Model.Any())
     {
@@ -14,8 +21,8 @@
     {
         <table class="table">
             <tr class="table-dark">
-                <th>ID Prenotazione</th>
-                <th>ID Alloggio</th>
+                <th>Prenotazione</th>
+                <th>Alloggio</th>
                 <th>Data Check-In</th>
                 <th>Data Check-Out</th>
                 <th>Stato Prenotazione</th>
@@ -30,8 +37,6 @@
                     <td>@prenotazione.DataCheckOut.ToShortDateString()</td>
                     <td>@prenotazione.StatoPrenotazione</td>
                     <td>
-                        @Html.ActionLink("Dettagli", "Dettagli", new { id = prenotazione.IDPrenotazione })
-                        @Html.ActionLink("Modifica", "Modifica", new { id = prenotazione.IDPrenotazione })
                         @Html.ActionLink("Elimina", "ConfermaEliminazione", new { id = prenotazione.IDPrenotazione })
                     </td>
                 </tr>

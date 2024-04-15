@@ -135,13 +135,14 @@ namespace Travel_Nest.Controllers
             return View(prenotazione);
         }
 
-        [HttpPost, ActionName("Elimina")]
+        [HttpPost,]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> EliminaConfermata(int id)
+        public async Task<ActionResult> Elimina(int id)
         {
             Prenotazioni prenotazione = await db.Prenotazioni.FindAsync(id);
             db.Prenotazioni.Remove(prenotazione);
             await db.SaveChangesAsync();
+            TempData["PrenotazioneCancellata"] = "Prenotazione Cancellata";
             return RedirectToAction("Index");
         }
 
