@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Travel_Nest.Models.Recensioni>
+
+@{
+    ViewBag.Title = "Elenco Recensioni";
+}
+
+<div class="container py-5">
+    <h1 class="text-center text-white my-5" style="font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">Elenco delle recensioni</h1>
+
+    @if (!Model.Any())
+    {
+        <h3 class="text-center text-danger mb-5 p-4 bg-danger-subtle rounded-pill border border-2 border-danger">Non ci sono recensioni disponibili al momento.</h3>
+    }
+    else
+    {
+        <table class="table">
+            <tr class="table-dark">
+                <th>Utente</th>
+                <th>Alloggio</th>
+                <th>Testo</th>
+                <th>Valutazione</th>
+                <th>Data Recensione</th>
+                <th>Azioni</th>
+            </tr>
+            @foreach (var recensione in Model)
+            {
+                <tr>
+                    <td>@recensione.Utenti.Nome</td>
+                    <td>
+                        @if (recensione != null && recensione.Alloggi != null)
+                        {
+                            @recensione.Alloggi.NomeAlloggio
+                        }
+                    </td>
+
+                    <td>@recensione.TestoRecensione</td>
+                    <td>@recensione.Valutazione</td>
+                    <td>@recensione.DataRecensione.ToShortDateString()</td>
+                    <td>
+                        @Html.ActionLink("Dettagli", "Details", new { id = recensione.IDRecensione })
+                        @Html.ActionLink("Modifica", "Edit", new { id = recensione.IDRecensione })
+                        @Html.ActionLink("Elimina", "Delete", new { id = recensione.IDRecensione })
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+</div>

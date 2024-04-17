@@ -1,0 +1,40 @@
+﻿@model Travel_Nest.Models.Recensioni
+
+@{
+    ViewBag.Title = "Modifica Recensione";
+}
+
+<div class="container py-5">
+    <h1 class="text-center my-5">Modifica recensione</h1>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TestoRecensione, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TestoRecensione, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TestoRecensione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valutazione, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Valutazione, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Valutazione, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Salva" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+
+    <p>
+        @Html.ActionLink("Torna all'elenco", "Index")
+    </p>
+</div>

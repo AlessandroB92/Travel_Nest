@@ -44,3 +44,14 @@ footer {
     background: -webkit-linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(42,51,62,1) 28%, rgba(66,88,119,1) 64%, rgba(85,117,164,1) 100%);
     background: linear-gradient(0deg, rgba(33,37,41,1) 0%, rgba(42,51,62,1) 28%, rgba(66,88,119,1) 64%, rgba(85,117,164,1) 100%);
 }
+.star {
+    color: #ffeead;
+    cursor: pointer;
+}
+.star i {
+    font-size: 24px;
+}
+
+.star.filled i {
+    color: gold;
+}

@@ -48,6 +48,7 @@
                     @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                     {
                         <li>@Html.ActionLink("Le mie Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Le mie Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
                     }
                 </ul>
                 @if (authCookie != null)

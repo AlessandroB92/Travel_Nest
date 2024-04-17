@@ -20,8 +20,7 @@ namespace Travel_Nest.Controllers
                 return RedirectToAction("Index", "Login");
             }
             var userData = ((FormsIdentity)User.Identity).Ticket.UserData;
-            int userId;
-            if (!int.TryParse(userData, out userId))
+            if (!int.TryParse(userData, out int userId))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -56,8 +55,7 @@ namespace Travel_Nest.Controllers
             }
 
             var userData = ((FormsIdentity)User.Identity).Ticket.UserData;
-            int userId;
-            if (!int.TryParse(userData, out userId))
+            if (!int.TryParse(userData, out int userId))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }

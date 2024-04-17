@@ -1,0 +1,67 @@
+﻿@model Travel_Nest.Models.Recensioni
+
+@{
+    ViewBag.Title = "Nuova Recensione";
+}
+
+<div id="login" class="row w-75 m-auto my-5 bg-light rounded-3">
+    <h1 class="text-center mb-5 p-4 text-white rounded-top-3" style="font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px; background-color: #77ABF7;">Lascia il tuo Feedback</h1>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-12 text-center m-3">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TestoRecensione, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="d-flex justify-content-center">
+                    @Html.EditorFor(model => model.TestoRecensione, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TestoRecensione, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="col text-center">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Valutazione, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col m-3">
+                    <div class="rating">
+                        <span class="star" data-value="1"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="2"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="3"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="4"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="5"><i class="fa-solid fa-star"></i></span>
+                    </div>
+                    @Html.HiddenFor(model => model.Valutazione)
+                    @Html.ValidationMessageFor(model => model.Valutazione, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group m-3">
+                <div class="col">
+                    <input type="submit" value="Salva" class="btn btn-primary" />
+                </div>
+            </div>
+            <button class="btn btn-default mb-4">
+                @Html.ActionLink("Indietro", "Index", null, new { @class = "text-decoration-none text-dark" })
+            </button>
+        </div>
+    }
+
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".star").click(function () {
+                var value = $(this).data("value");
+                $("#Valutazione").val(value);
+                updateStars(value);
+            });
+            function updateStars(value) {
+                $(".star").each(function () {
+                    var starValue = $(this).data("value");
+                    $(this).toggleClass("filled", starValue <= value);
+                });
+            }
+        });
+    </script>
+}

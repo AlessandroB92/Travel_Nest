@@ -21,7 +21,7 @@ namespace Travel_Nest.Models
         public int? Valutazione { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? DataRecensione { get; set; }
+        public DateTime DataRecensione { get; set; }
 
         public virtual Alloggi Alloggi { get; set; }
 

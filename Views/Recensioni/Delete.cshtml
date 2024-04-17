@@ -1,0 +1,38 @@
+﻿@model Travel_Nest.Models.Recensioni
+
+@{
+    ViewBag.Title = "Elimina Recensione";
+}
+
+<div class="container py-5">
+    <h1 class="text-center my-5">Elimina recensione</h1>
+
+    <h3>Sei sicuro di voler eliminare questa recensione?</h3>
+
+    <div>
+        <h4>Dettagli Recensione</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>ID Recensione</dt>
+            <dd>@Model.IDRecensione</dd>
+            <dt>Testo</dt>
+            <dd>@Model.TestoRecensione</dd>
+            <dt>Valutazione</dt>
+            <dd>@Model.Valutazione</dd>
+            <dt>Data Recensione</dt>
+            <dd>@Model.DataRecensione.ToShortDateString()</dd>
+        </dl>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Elimina" class="btn btn-danger" />
+                @Html.ActionLink("Annulla", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    }
+</div>
