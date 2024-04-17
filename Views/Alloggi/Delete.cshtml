@@ -56,8 +56,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> 
-            @Html.ActionLink("Indietro", "Index")
+            <button type="submit" value="Delete" class="btn btn-danger me-3"> Cancella </button>
+            <button class="btn btn-default">@Html.ActionLink("Indietro", "Index", null, new { @class = "text-decoration-none text-dark" })</button>
         </div>
     }
 </div>

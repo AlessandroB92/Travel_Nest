@@ -66,8 +66,8 @@
             @Html.AntiForgeryToken()
 
             <div class="form-group my-3">
-                <input type="submit" value="Elimina" class="btn btn-danger" /> 
-                @Html.ActionLink("Annulla", "Index", null, new { @class = "btn btn-default" })
+                <button type="submit" value="Elimina" class="btn btn-danger">Elimina</button> 
+                <button class="btn btn-default">@Html.ActionLink("Annulla", "Index", null, new { @class = "btn btn-default" })</button>
             </div>
         }
     </div>

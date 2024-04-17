@@ -12,9 +12,9 @@
     <h2 class="text-center mt-5">Carica Immagine per: <br /> @Model.NomeAlloggio</h2>
     <label for="file" class="fw-bold fs-4 my-5">Seleziona un'immagine:</label>
     <input type="file" name="file" id="file" />
-    <button type="submit" class="btn btn-primary my-5">Carica Immagine</button>
+    <button type="submit" class="btn btn-primary my-4">Carica Immagine</button>
     <div class="form-actions no-color text-center mb-2">
-        @Html.ActionLink("Indietro", "Edit", new { id = @Model.IDAlloggio })
+        <button class="btn btn-default">@Html.ActionLink("Indietro", "Edit", new { id = @Model.IDAlloggio }, new { @class = "text-dark text-decoration-none" })</button>
     </div>
 </div>
 
