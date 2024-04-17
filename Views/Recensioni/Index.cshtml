@@ -37,9 +37,8 @@
                     <td>@recensione.Valutazione</td>
                     <td>@recensione.DataRecensione.ToShortDateString()</td>
                     <td>
-                        @Html.ActionLink("Dettagli", "Details", new { id = recensione.IDRecensione })
-                        @Html.ActionLink("Modifica", "Edit", new { id = recensione.IDRecensione })
-                        @Html.ActionLink("Elimina", "Delete", new { id = recensione.IDRecensione })
+                        <button class="btn btn-default p-0 me-2">@Html.ActionLink("✏️", "Edit", new { id = recensione.IDRecensione }, new { @class = "text-decoration-none" })</button>
+                        <button class="btn btn-default p-0">@Html.ActionLink("❌", "Delete", new { id = recensione.IDRecensione }, new { @class = "text-decoration-none" })</button>
                     </td>
                 </tr>
             }

@@ -10,19 +10,19 @@
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div class="col-12 text-center m-3">
+        <div class="col-12 text-center my-3">
             <div class="form-group">
-                @Html.LabelFor(model => model.TestoRecensione, htmlAttributes: new { @class = "control-label col-md-2" })
+                <label for="TestoRecensione" class="control-label mb-3 fw-bold fs-4">Recensione</label>
                 <div class="d-flex justify-content-center">
-                    @Html.EditorFor(model => model.TestoRecensione, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextAreaFor(model => model.TestoRecensione, new { @class = "form-control", rows = "4", style = "max-width: 600px;" })
                     @Html.ValidationMessageFor(model => model.TestoRecensione, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
         <div class="col text-center">
             <div class="form-group">
-                @Html.LabelFor(model => model.Valutazione, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col m-3">
+                <label for="Valutazione" class="control-label fw-bold fs-4">Valutazione</label>
+                <div class="col m-4">
                     <div class="rating">
                         <span class="star" data-value="1"><i class="fa-solid fa-star"></i></span>
                         <span class="star" data-value="2"><i class="fa-solid fa-star"></i></span>
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="form-group m-3">
+            <div class="form-group m-4">
                 <div class="col">
                     <input type="submit" value="Salva" class="btn btn-primary" />
                 </div>
