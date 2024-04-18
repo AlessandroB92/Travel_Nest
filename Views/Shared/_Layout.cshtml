@@ -39,7 +39,9 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li><a class="nav-link mx-4" href="@Url.Action("Index", "Home", new { @class = "nav-link" })"><i class="fa-solid fa-house"></i>  Home  </a></li>
+                    <li><a class="nav-link mx-4" href="@Url.Action("Index", "Home", new { @class = "nav-link" })"><i class="fa-solid fa-house"></i>  Home</a></li>
+                    <li><a class="nav-link" href="@Url.Action("RecensioniUtenti", "Home", new { @class = "nav-link" })">Recensioni</a></li>
+
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Lista Utenti", "Index", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>

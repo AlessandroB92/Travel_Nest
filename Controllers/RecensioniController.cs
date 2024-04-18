@@ -34,7 +34,6 @@ namespace Travel_Nest.Controllers
 
             return View(recensioni);
         }
-
         public ActionResult Details(int? id)
         {
             if (id == null)

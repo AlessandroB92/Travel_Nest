@@ -392,6 +392,7 @@
     <Content Include="Views\Recensioni\Details.cshtml" />
     <Content Include="Views\Recensioni\Create.cshtml" />
     <Content Include="Views\Recensioni\Delete.cshtml" />
+    <Content Include="Views\Home\RecensioniUtenti.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

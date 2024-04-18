@@ -19,7 +19,13 @@ namespace Travel_Nest.Controllers
                 Immagini = a.Immagini.ToList()
             }).ToList();
 
-            return View(alloggi);
+            var recensioni = db.Recensioni.ToList();
+
+            // Passa sia gli alloggi che le recensioni alla vista
+            ViewBag.Alloggi = alloggi;
+            ViewBag.Recensioni = recensioni;
+
+            return View();
         }
     }
 }
