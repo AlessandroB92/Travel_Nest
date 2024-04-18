@@ -51,8 +51,8 @@
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                         {
-                            <li>@Html.ActionLink("Le mie Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Le mie Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
                             <li>
                                 <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"> <i class="fa-solid fa-user"></i></a>
                             </li>

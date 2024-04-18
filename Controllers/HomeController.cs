@@ -13,13 +13,13 @@ namespace Travel_Nest.Controllers
 
         public ActionResult Index()
         {
-            var alloggiWithImages = db.Alloggi.ToList().Select(a => new AlloggioCard
+            var alloggi = db.Alloggi.ToList().Select(a => new AlloggioCard
             {
                 Alloggio = a,
                 Immagini = a.Immagini.ToList()
             }).ToList();
 
-            return View(alloggiWithImages);
+            return View(alloggi);
         }
     }
 }

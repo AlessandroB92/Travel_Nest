@@ -9,7 +9,7 @@
 
     @if (!Model.Any())
     {
-        <h3 class="text-center text-danger mb-5 p-4 bg-danger-subtle rounded-pill border border-2 border-danger">Non ci sono recensioni disponibili al momento.</h3>
+        <h3 class="text-center text-warning mb-5 p-4 bg-warning-subtle rounded-pill border border-2 border-warning">Non ci sono recensioni disponibili al momento.</h3>
     }
     else
     {
@@ -34,10 +34,16 @@
                     </td>
 
                     <td>@recensione.TestoRecensione</td>
-                    <td>@recensione.Valutazione</td>
+                    <td>
+                        <div class="rating">
+                            @for (int i = 1; i <= recensione.Valutazione; i++)
+                            {
+                                <span class="star"><i class="fa-solid fa-star" style="color:gold;"></i></span>
+                            }
+                        </div>
+                    </td>
                     <td>@recensione.DataRecensione.ToShortDateString()</td>
                     <td>
-                        <button class="btn btn-default p-0 me-2">@Html.ActionLink("✏️", "Edit", new { id = recensione.IDRecensione }, new { @class = "text-decoration-none" })</button>
                         <button class="btn btn-default p-0">@Html.ActionLink("❌", "Delete", new { id = recensione.IDRecensione }, new { @class = "text-decoration-none" })</button>
                     </td>
                 </tr>
