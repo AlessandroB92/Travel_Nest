@@ -43,7 +43,7 @@
                         <a class="nav-link mx-4" href="@Url.Action("Index", "Home")"><i class="fa-solid fa-house"></i>  Home  </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
+                        <a class="nav-link mx-4" href="@Url.Action("About", "Home")">About</a>
                     </li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
@@ -80,12 +80,12 @@
                         <li>
                             <form action="@Url.Action("Create", "Utenti")" method="get">
                                 @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-outline-primary rounded-pill text-white fw-bold mx-2">Registrati</button>
+                                <button type="submit" class="btn btn-outline-primary rounded-pill text-white fw-bold m-2">Registrati</button>
                             </form>
                         </li>
                         <li>
                             <form action="@Url.Action("Index", "Login")" method="get">
-                                <button type="submit" class="btn btn-outline-success rounded-pill text-white fw-bold">Accedi</button>
+                                <button type="submit" class="btn btn-outline-success rounded-pill text-white fw-bold m-2">Accedi</button>
                             </form>
                         </li>
                     </ul>
@@ -97,7 +97,26 @@
         @RenderBody()
     </div>
     <footer class="text-center py-2 text-white">
-        <p>&copy; @DateTime.Now.Year - Travel Nest SRL</p>
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold mb-4">Contatti</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Via delle Vacanze, 123 - 00123, Roma</p>
+                    <p><i class="fas fa-envelope"></i> info@travelnest.com</p>
+                    <p><i class="fas fa-phone"></i> +39 012 345 6789</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5 class="fw-bold mb-3">Seguici su</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="my-3">&copy; @DateTime.Now.Year - Travel Nest SRL</p>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
