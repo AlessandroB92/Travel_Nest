@@ -19,29 +19,30 @@
     }
     else
     {
-        <table class="table table-hover w-75 m-auto">
-            <tr class="table-dark">
-                <th>Prenotazione</th>
-                <th>Alloggio</th>
-                <th>Data Check-In</th>
-                <th>Data Check-Out</th>
-                <th>Stato Prenotazione</th>
-                <th>Azioni</th>
-            </tr>
+        <div class="row mb-3">
             @foreach (var prenotazione in Model)
             {
-                <tr>
-                    <td>@prenotazione.IDPrenotazione</td>
-                    <td>@prenotazione.IDAlloggio</td>
-                    <td>@prenotazione.DataCheckIn.ToShortDateString()</td>
-                    <td>@prenotazione.DataCheckOut.ToShortDateString()</td>
-                    <td>@prenotazione.StatoPrenotazione</td>
-                    <td>
-                        <button class="btn btn-default p-0">@Html.ActionLink("❌", "ConfermaEliminazione", new { id = prenotazione.IDPrenotazione }, new { @class = "text-decoration-none" })</button>
-                    </td>
-                </tr>
+                <div class="col-md-6 mb-4">
+                    <div id="login" class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center mb-4">Prenotazione: @prenotazione.IDPrenotazione</h5>
+                            <p class="card-text mb-3">
+                                <strong>Alloggio:</strong> @prenotazione.Alloggi.NomeAlloggio<br />
+                            </p>
+                            <p class="card-text mb-3">
+                                <strong>Data Check-In:</strong> @prenotazione.DataCheckIn.ToShortDateString() <br />
+                            </p>
+                            <p class="card-text mb-3">
+                                <strong>Data Check-Out:</strong> @prenotazione.DataCheckOut.ToShortDateString() <br />
+                            </p>
+                            <p class="card-text mb-3">
+                                <strong>Stato Prenotazione:</strong> @prenotazione.StatoPrenotazione
+                            </p>
+                                <button class="btn btn-danger" style="font-size: 20px;" onclick="location.href='@Url.Action("ConfermaEliminazione", new { id = prenotazione.IDPrenotazione })'">Elimina</button>
+                        </div>
+                    </div>
+                </div>
             }
-        </table>
+        </div>
     }
 </div>
-

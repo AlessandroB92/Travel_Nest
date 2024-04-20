@@ -13,41 +13,37 @@
     }
     else
     {
-        <table class="table">
-            <tr class="table-dark">
-                <th>Utente</th>
-                <th>Alloggio</th>
-                <th>Testo</th>
-                <th>Valutazione</th>
-                <th>Data Recensione</th>
-                <th>Azioni</th>
-            </tr>
+        <div class="row mb-3">
             @foreach (var recensione in Model)
             {
-                <tr>
-                    <td>@recensione.Utenti.Nome</td>
-                    <td>
-                        @if (recensione != null && recensione.Alloggi != null)
-                        {
-                            @recensione.Alloggi.NomeAlloggio
-                        }
-                    </td>
-
-                    <td>@recensione.TestoRecensione</td>
-                    <td>
-                        <div class="rating">
-                            @for (int i = 1; i <= recensione.Valutazione; i++)
-                            {
-                                <span class="star"><i class="fa-solid fa-star" style="color:gold;"></i></span>
-                            }
+                <div class="col-md-6 mb-4">
+                    <div id="login" class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">@recensione.Utenti.Nome</h5>
+                            <p class="mb-3">
+                                @if (recensione != null && recensione.Alloggi != null)
+                                {
+                                    <strong>Alloggio:</strong> @recensione.Alloggi.NomeAlloggio <br />
+                                }
+                            </p>
+                            <p class="mb-3">
+                                <strong>Recensione:</strong> 
+                            </p>
+                            <p class="card-text">@recensione.TestoRecensione</p>
+                                <strong>Valutazione:</strong>
+                                <div class="rating">
+                                    @for (int i = 1; i <= recensione.Valutazione; i++)
+                                    {
+                                        <span class="star"><i class="fa-solid fa-star" style="color:gold;"></i></span>
+                                    }
+                                </div>
+                                <br />
+                                <p><strong>Data Recensione:</strong> @recensione.DataRecensione.ToShortDateString()</p>
+                            <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = recensione.IDRecensione })'">Elimina</button>
                         </div>
-                    </td>
-                    <td>@recensione.DataRecensione.ToShortDateString()</td>
-                    <td>
-                        <button class="btn btn-default p-0">@Html.ActionLink("❌", "Delete", new { id = recensione.IDRecensione }, new { @class = "text-decoration-none" })</button>
-                    </td>
-                </tr>
+                    </div>
+                </div>
             }
-        </table>
+        </div>
     }
 </div>

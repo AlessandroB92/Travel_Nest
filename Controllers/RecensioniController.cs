@@ -34,21 +34,6 @@ namespace Travel_Nest.Controllers
 
             return View(recensioni);
         }
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Recensioni recensione = db.Recensioni.Find(id);
-            if (recensione == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(recensione);
-        }
 
         public ActionResult Create(int idAlloggio)
         {
@@ -130,6 +115,5 @@ namespace Travel_Nest.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-
     }
 }

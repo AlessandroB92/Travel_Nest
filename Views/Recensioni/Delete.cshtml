@@ -3,39 +3,40 @@
 @{
     ViewBag.Title = "Elimina Recensione";
 }
+<div style="height:100vh;">
+    <div id="login" class="container my-5 rounded-3 p-0 bg-light w-50 m-auto">
+        <h2 class="bg-danger text-center text-white px-3 py-4 rounded-top-2" style="font-family: 'Satisfy', cursive; font-weight: bold;">Sicuro di voler eliminare la recensione?</h2>
 
-<div id="login" class="container my-5 rounded-3 p-0 bg-light w-50 m-auto">
-    <h2 class="bg-danger text-center text-white px-3 py-4 rounded-top-2" style="font-family: 'Satisfy', cursive; font-weight: bold;">Sicuro di voler eliminare la recensione?</h2>
-
-    <div class="p-3">
-        <dl class="dl-horizontal">
-            <dt class="fw-bold">Alloggio</dt>
-            <dd>@Model.Alloggi.NomeAlloggio</dd>
-            <dt class="fw-bold">Valutazione</dt>
-            <dd>
-                <div class="rating">
-                    @for (int i = 1; i <= Model.Valutazione; i++)
-                    {
-                        <span class="star"><i class="fa-solid fa-star" style="color:gold;"></i></span>
-                    }
-                </div>
-            </dd>
-            <dt class="fw-bold">Recensione</dt>
-            <dd>@Model.TestoRecensione</dd>
-            <dt class="fw-bold">Data Recensione</dt>
-            <dd>@Model.DataRecensione.ToShortDateString()</dd>
-        </dl>
-    </div>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-group p-3">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="submit" value="Elimina" class="btn btn-danger">Elimina</button>
-                <button class="btn btn-default border-0">@Html.ActionLink("Annulla", "Index", null, new { @class = "btn btn-default" })</button>
-            </div>
+        <div class="p-3">
+            <dl class="dl-horizontal">
+                <dt class="fw-bold">Alloggio</dt>
+                <dd>@Model.Alloggi.NomeAlloggio</dd>
+                <dt class="fw-bold">Valutazione</dt>
+                <dd>
+                    <div class="rating">
+                        @for (int i = 1; i <= Model.Valutazione; i++)
+                        {
+                            <span class="star"><i class="fa-solid fa-star" style="color:gold;"></i></span>
+                        }
+                    </div>
+                </dd>
+                <dt class="fw-bold">Recensione</dt>
+                <dd>@Model.TestoRecensione</dd>
+                <dt class="fw-bold">Data Recensione</dt>
+                <dd>@Model.DataRecensione.ToShortDateString()</dd>
+            </dl>
         </div>
-    }
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group p-3">
+                <div class="col-md-offset-2 col-md-10">
+                    <button type="submit" value="Elimina" class="btn btn-danger">Elimina</button>
+                    <button class="btn btn-default border-0">@Html.ActionLink("Annulla", "Index", null, new { @class = "btn btn-default" })</button>
+                </div>
+            </div>
+        }
+    </div>
 </div>

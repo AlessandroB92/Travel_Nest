@@ -40,9 +40,6 @@
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li><a class="nav-link mx-4" href="@Url.Action("Index", "Home")"><i class="fa-solid fa-house"></i>  Home</a></li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#recensioni">Recensioni</a>
-                    </li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Lista Utenti", "Index", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>
@@ -54,8 +51,8 @@
                     <ul class="navbar-nav">
                         @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                         {
-                            <li>@Html.ActionLink("Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Le tue Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Le tue Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
                             <li>
                                 <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"> <i class="fa-solid fa-user"></i></a>
                             </li>
@@ -93,7 +90,7 @@
     <div>
         @RenderBody()
     </div>
-    <footer class="text-center py-2 text-white m-auto">
+    <footer class="text-center py-2 text-white">
         <p>&copy; @DateTime.Now.Year - Travel Nest SRL</p>
     </footer>
 
