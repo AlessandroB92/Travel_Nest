@@ -304,6 +304,12 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Images\aereo.png" />
     <Content Include="Content\Images\Cattedrale_di_Palermo.jpg" />
+    <Content Include="Content\Images\Milano.jpg" />
+    <Content Include="Content\Images\Napoli.jpg" />
+    <Content Include="Content\Images\Palermo.jpg" />
+    <Content Include="Content\Images\Roma.jpg" />
+    <Content Include="Content\Images\Torino.jpg" />
+    <Content Include="Content\Images\Venezia.jpg" />
     <Content Include="Content\PersonalStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -394,6 +400,7 @@
     <Content Include="Views\Recensioni\Delete.cshtml" />
     <Content Include="Views\Home\RecensioniUtenti.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

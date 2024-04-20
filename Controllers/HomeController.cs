@@ -27,5 +27,10 @@ namespace Travel_Nest.Controllers
 
             return View();
         }
+
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }

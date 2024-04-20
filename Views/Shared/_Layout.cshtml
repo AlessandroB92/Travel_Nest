@@ -39,12 +39,17 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
-                    <li><a class="nav-link mx-4" href="@Url.Action("Index", "Home")"><i class="fa-solid fa-house"></i>  Home</a></li>
+                    <li>
+                        <a class="nav-link mx-4" href="@Url.Action("Index", "Home")"><i class="fa-solid fa-house"></i>  Home  </a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="@Url.Action("About", "Home")">About</a>
+                    </li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Lista Utenti", "Index", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Gestione Alloggi", "Index", "Alloggi", new { id = userId }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Lista Recensioni", "Index", "Admin",null, new { @class = "nav-link"})</li>
+                        <li>@Html.ActionLink("Gestione Recensioni", "Index", "Admin", null, new { @class = "nav-link" })</li>
                     }
                 </ul>
                 @if (authCookie != null)
