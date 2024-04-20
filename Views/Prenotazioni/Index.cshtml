@@ -38,7 +38,7 @@
                             <p class="card-text mb-3">
                                 <strong>Stato Prenotazione:</strong> @prenotazione.StatoPrenotazione
                             </p>
-                                <button class="btn btn-danger" style="font-size: 20px;" onclick="location.href='@Url.Action("ConfermaEliminazione", new { id = prenotazione.IDPrenotazione })'">Elimina</button>
+                                <button class="btn btn-danger" onclick="location.href='@Url.Action("ConfermaEliminazione", new { id = prenotazione.IDPrenotazione })'">Elimina</button>
                         </div>
                     </div>
                 </div>
