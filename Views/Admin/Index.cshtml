@@ -1,0 +1,36 @@
+﻿@model List<Travel_Nest.Models.Recensioni>
+
+@{
+    ViewBag.Title = "Recensioni - Admin";
+}
+
+<div class="container py-5">
+    <h1 class="text-center text-white my-5">Recensioni - Admin</h1>
+
+    <div class="row mb-3">
+        @foreach (var recensione in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recensione da: @recensione.Utenti.Email</h5>
+                        <div class="rating mb-3">
+                            @for (int i = 1; i <= recensione.Valutazione; i++)
+                            {
+                                <span class="star"><i class="fa-solid fa-star" style="color:gold;"></i></span>
+                            }
+                        </div>
+                        <p><strong>Alloggio:</strong> @recensione.Alloggi.NomeAlloggio</p>
+                        <p><strong>Testo:</strong></p>
+                        <p class="card-text">@recensione.TestoRecensione</p>
+                        <p><strong>Data Recensione:</strong> @recensione.DataRecensione.ToShortDateString()</p>
+                        @using (Html.BeginForm("DeleteRecensione", "Admin", new { id = recensione.IDRecensione }, FormMethod.Post, new { onsubmit = "return confirm('Sei sicuro di voler eliminare questa recensione?');" }))
+                        {
+                            <button type="submit" class="btn btn-danger">Elimina</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

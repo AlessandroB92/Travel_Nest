@@ -44,6 +44,7 @@
                     {
                         <li>@Html.ActionLink("Lista Utenti", "Index", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>
                         <li>@Html.ActionLink("Gestione Alloggi", "Index", "Alloggi", new { id = userId }, new { @class = "nav-link" })</li>
+                        <li>@Html.ActionLink("Lista Recensioni", "Index", "Admin",null, new { @class = "nav-link"})</li>
                     }
                 </ul>
                 @if (authCookie != null)
