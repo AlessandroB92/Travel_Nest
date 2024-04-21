@@ -25,20 +25,22 @@
                 <div class="col-md-6 mb-4 m-auto">
                     <div id="login" class="card">
                         <div class="card-body">
-                            <h5 class="card-title text-center mb-4">Prenotazione: @prenotazione.IDPrenotazione</h5>
-                            <p class="card-text mb-3">
+                            <h5 class="card-title text-center mb-4 fw-bold" style="font-family: 'Satisfy', cursive; font-size: 30px; color: #77ABF7;">Riepilogo</h5>
+                            <p class="card-text text-center mb-3">
                                 <strong>Alloggio:</strong> @prenotazione.Alloggi.NomeAlloggio<br />
                             </p>
-                            <p class="card-text mb-3">
+                            <p class="card-text mb-3 text-center">
                                 <strong>Data Check-In:</strong> @prenotazione.DataCheckIn.ToShortDateString() <br />
                             </p>
-                            <p class="card-text mb-3">
+                            <p class="card-text mb-3 text-center">
                                 <strong>Data Check-Out:</strong> @prenotazione.DataCheckOut.ToShortDateString() <br />
                             </p>
-                            <p class="card-text mb-3">
-                                <strong>Stato Prenotazione:</strong> @prenotazione.StatoPrenotazione
+                            <p class="card-text mb-3 text-center">
+                                <strong>Stato:</strong> @prenotazione.StatoPrenotazione
                             </p>
+                            <div class="d-flex justify-content-center">
                                 <button class="btn btn-danger" onclick="location.href='@Url.Action("ConfermaEliminazione", new { id = prenotazione.IDPrenotazione })'">Elimina</button>
+                            </div>
                         </div>
                     </div>
                 </div>

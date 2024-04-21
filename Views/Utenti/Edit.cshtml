@@ -40,8 +40,8 @@
 
             <div class="form-group d-flex flex-column align-items-center justify-content-center my-3">
                 <div>
-                    <input type="submit" value="Save" class="btn btn-success me-3" />
-                    @Html.ActionLink("Indietro", "Index")
+                    <button type="submit" value="Save" class="btn btn-success me-3">Salva</button>
+                    <button class="btn btn-default border-0">@Html.ActionLink("Indietro", "Index", null, new { @class = "btn btn-default"})</button>
                 </div>
             </div>
         </div>

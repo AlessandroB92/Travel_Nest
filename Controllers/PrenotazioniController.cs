@@ -72,7 +72,7 @@ namespace Travel_Nest.Controllers
         {
             if (ModelState.IsValid)
             {
-                prenotazione.StatoPrenotazione = "Prenotato";
+                prenotazione.StatoPrenotazione = "Confermato";
                 db.Prenotazioni.Add(prenotazione);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
