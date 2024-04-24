@@ -5,7 +5,7 @@
 }
 
 <div id="login" class="container my-5 rounded-3 p-0">
-<h2 style="font-family: 'Satisfy', cursive; font-weight: bold;" class="p-4 m-0 fw-bold text-white rounded-top-3">@Model.NomeAlloggio</h2>
+    <h2 style="font-family: 'Satisfy', cursive; font-weight: bold;" class="p-4 m-0 fw-bold text-white rounded-top-3">@Model.NomeAlloggio</h2>
     <div class="row w-100 m-auto rounded-bottom-3">
         <div class="col-lg-6 p-0">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 450px">
@@ -56,6 +56,33 @@
     </div>
 
     <div class="container d-flex justify-content-center my-4">
-        <button class="btn btn-default bg-white border-white rounded-pill mb-4">@Html.ActionLink("Torna alla Home", "Index", null, new { @class = "text-decoration-none fw-bold", style = "color: #77ABF7" })</button>
+        <button class="btn btn-default bg-white border-white rounded-pill mb-4 fw-bold" style="color: #77ABF7"  onclick="location.href='@Url.Action("Index", "Home")'">Torna alla Home</button>
     </div>
 </div>
+
+<section id="recensioni" class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4 text-white" style="font-family: 'Satisfy', cursive; font-weight: bold; font-size: 50px;">Recensioni per: @Model.NomeAlloggio</h2>
+        <div class="row">
+            @foreach (var recensione in ViewBag.Recensioni ?? Enumerable.Empty<Travel_Nest.Models.Recensioni>())
+            {
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div id="login" class="card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3"><i class="fa-solid fa-user"></i> @recensione.Utenti.Email</h5>
+                            <div class="rating mb-3">
+                                @for (int i = 1; i <= recensione.Valutazione; i++)
+                                {
+                                    <span class="star"><i class="fa-solid fa-star" style="color:gold;"></i></span>
+                                }
+                            </div>
+                            <p class="fw-bold m-0">Recensione</p>
+                            <p class="card-text">@recensione.TestoRecensione</p>
+                            <p><small class="text-muted">Data recensione: @recensione.DataRecensione.ToShortDateString()</small></p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

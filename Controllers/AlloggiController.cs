@@ -42,6 +42,11 @@ namespace Travel_Nest.Controllers
                 return HttpNotFound();
             }
 
+            // Carica anche le recensioni relative all'alloggio
+            var recensioni = db.Recensioni.Where(r => r.IDAlloggio == id).ToList();
+
+            ViewBag.Recensioni = recensioni;
+
             return View(alloggio);
         }
 
