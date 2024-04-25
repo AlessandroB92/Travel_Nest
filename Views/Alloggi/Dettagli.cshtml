@@ -41,11 +41,11 @@
                     <dd>@(Model.Disponibilita ? "Disponibile" : "Non disponibile")</dd>
                 </dl>
                 <p class="m-4">
-                    @if (User.Identity.IsAuthenticated)
+                    @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                     {
                         <button onclick="window.location.href='@Url.Action("NuovaPrenotazione", "Prenotazioni", new { idAlloggio = Model.IDAlloggio })'" class="btn btn-primary">Prenota</button>
                     }
-                    else
+                    else if (!User.Identity.IsAuthenticated || User.IsInRole("User"))
                     {
                         <button onclick="window.location.href='@Url.Action("Index", "Login")'" class="btn btn-primary">Effettua il login per prenotare</button>
                     }

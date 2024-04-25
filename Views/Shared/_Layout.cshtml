@@ -27,7 +27,7 @@
 </head>
 <body>
 
-    <nav id="mynav" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark">
+    <nav id="mynav" class="navbar navbar-expand-md navbar-toggleable-md navbar-dark">
         <div class="container">
             <i class="fa-solid fa-plane-departure fa-flip mx-2 fs-3" style="color: #ffffff;"></i>
             @Html.ActionLink("Travel Nest", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", style = "font-family: 'Satisfy', cursive; font-weight: bold; font-size: 30px;" })
@@ -35,7 +35,7 @@
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+            <div class="collapse navbar-collapse d-md-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li>
                         <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
@@ -47,22 +47,21 @@
                 @if (authCookie != null)
                 {
                     <ul class="navbar-nav">
-                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("Lista Utenti", "Index", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Gestione Alloggi", "Index", "Alloggi", new { id = userId }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Gestione Recensioni", "Index", "Admin", null, new { @class = "nav-link me-4" })</li>
-                    }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Lista Utenti", "Index", "Utenti", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Gestione Alloggi", "Index", "Alloggi", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Gestione Recensioni", "Index", "Admin", null, new { @class = "nav-link me-4" })</li>
+                            <li class="d-flex align-items-center text-white me-2 fw-bold">@User.Identity.Name</li>
+                        }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                         {
-                            <li class="d-flex align-items-center">@Html.ActionLink("Le tue Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
-                            <li class="d-flex align-items-center">@Html.ActionLink("Le tue Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li class="d-flex align-items-center">@Html.ActionLink("Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li class="d-flex align-items-center">@Html.ActionLink("Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
                             <li>
-                                <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"><i class="bi bi-person-circle fs-4"></i></a>
+                                <a class="nav-link d-flex align-items-center" href="@Url.Action("Edit", "Utenti", new { id = userId })"><i class="bi bi-person-circle fs-5 mx-2"></i> @User.Identity.Name </a>
                             </li>
                         }
-
-
                         <li class="d-flex align-items-center text-white me-2">
                             <form action="@Url.Action("Logout", "Login")" method="post">
                                 @Html.AntiForgeryToken()
@@ -71,7 +70,6 @@
                         </li>
                     </ul>
                 }
-
                 @if (authCookie == null)
                 {
                     <ul class="navbar-nav">
