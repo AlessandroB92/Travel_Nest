@@ -22,9 +22,7 @@
     <title>@ViewBag.Title Travel Nest</title>
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/css")
-    <script src="https://kit.fontawesome.com/23e6196c74.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Satisfy&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -57,15 +55,15 @@
                     }
                         @if (User.Identity.IsAuthenticated && User.IsInRole("User"))
                         {
-                            <li>@Html.ActionLink("Le tue Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
-                            <li>@Html.ActionLink("Le tue Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li class="d-flex align-items-center">@Html.ActionLink("Le tue Prenotazioni", "Index", "Prenotazioni", new { id = userId }, new { @class = "nav-link" })</li>
+                            <li class="d-flex align-items-center">@Html.ActionLink("Le tue Recensioni", "Index", "Recensioni", new { id = userId }, new { @class = "nav-link" })</li>
                             <li>
-                                <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"> <i class="fa-solid fa-user"></i></a>
+                                <a class="nav-link" href="@Url.Action("Edit", "Utenti", new { id = userId })"><i class="bi bi-person-circle fs-4"></i></a>
                             </li>
                         }
 
-                        <li class="d-flex align-items-center text-white me-2"> @User.Identity.Name </li>
-                        <li>
+
+                        <li class="d-flex align-items-center text-white me-2">
                             <form action="@Url.Action("Logout", "Login")" method="post">
                                 @Html.AntiForgeryToken()
                                 <button type="submit" class="btn btn-outline-danger rounded-pill text-white fw-bold">Logout</button>
@@ -101,17 +99,17 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h5 class="fw-bold mb-4">Contatti</h5>
-                    <p><i class="fas fa-map-marker-alt"></i> Via delle Vacanze, 123 - 00123, Roma</p>
-                    <p><i class="fas fa-envelope"></i> info@travelnest.com</p>
-                    <p><i class="fas fa-phone"></i> +39 012 345 6789</p>
+                    <p><i class="bi bi-geo-alt-fill"></i> Via delle Vacanze, 123 - 00123, Roma</p>
+                    <p><i class="bi bi-envelope-at-fill"></i> info@travelnest.com</p>
+                    <p><i class="bi bi-telephone-fill"></i> +39 012 345 6789</p>
                 </div>
                 <div class="col-lg-6">
                     <h5 class="fw-bold mb-3">Seguici su</h5>
                     <div class="social-icons">
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-white mx-3"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="text-white mx-3"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="text-white mx-3"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-white mx-3"><i class="bi bi-linkedin fs-4"></i></a>
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@
             @Html.HiddenFor(model => model.IDUtente)
 
             <div class="form-group d-flex align-items-center mb-3">
-                <i class="fa-solid fa-user" style="color: #373737; margin-right:5px;"></i>
+                <i class="bi bi-person-circle fs-4" style="color: #373737; margin-right:5px;"></i>
                 @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
 
@@ -24,15 +24,15 @@
             </div>
 
             <div class="form-group d-flex align-items-center mb-3">
-                <i class="fa-solid fa-envelope" style="color: #373737; margin-right:5px;"></i>
+                <i class="bi bi-envelope-at-fill fs-4" style="color: #373737; margin-right:5px;"></i>
                 @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group d-flex align-items-center mb-3">
-                <i class="fa-solid fa-key" style="color: #373737; margin-right:5px;"></i>
+                <i class="bi bi-key-fill fs-4" style="color: #373737; margin-right:5px;"></i>
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password", @id = "password-input" } })
-                <span id="toggle-password" class="fa-solid fa-eye" style="color: #373737; margin-left: -30px; cursor: pointer;"></span>
+                <span id="toggle-password" class="bi bi-eye" style="color: #373737; margin-left: -30px; cursor: pointer;"></span>
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
 
@@ -48,10 +48,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
@@ -62,10 +58,10 @@
                 var type = passwordInput.attr('type');
                 if (type === 'password') {
                     passwordInput.attr('type', 'text');
-                    $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+                    $(this).removeClass('bi-eye').addClass('bi-eye-slash');
                 } else {
                     passwordInput.attr('type', 'password');
-                    $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+                    $(this).removeClass('bi-eye-slash').addClass('bi-eye');
                 }
             });
         });

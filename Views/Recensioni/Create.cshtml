@@ -24,11 +24,11 @@
                 <label for="Valutazione" class="control-label fw-bold fs-4">Valutazione</label>
                 <div class="col m-4">
                     <div class="rating">
-                        <span class="star" data-value="1"><i class="fa-solid fa-star"></i></span>
-                        <span class="star" data-value="2"><i class="fa-solid fa-star"></i></span>
-                        <span class="star" data-value="3"><i class="fa-solid fa-star"></i></span>
-                        <span class="star" data-value="4"><i class="fa-solid fa-star"></i></span>
-                        <span class="star" data-value="5"><i class="fa-solid fa-star"></i></span>
+                        <span class="star" data-value="1"><i class="bi bi-star-fill"></i></span>
+                        <span class="star" data-value="2"><i class="bi bi-star-fill"></i></span>
+                        <span class="star" data-value="3"><i class="bi bi-star-fill"></i></span>
+                        <span class="star" data-value="4"><i class="bi bi-star-fill"></i></span>
+                        <span class="star" data-value="5"><i class="bi bi-star-fill"></i></span>
                     </div>
                     @Html.HiddenFor(model => model.Valutazione)
                     @Html.ValidationMessageFor(model => model.Valutazione, "", new { @class = "text-danger" })
