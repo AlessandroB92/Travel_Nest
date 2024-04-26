@@ -32,7 +32,7 @@
             <div class="form-group d-flex align-items-center mb-3">
                 <i class="bi bi-key-fill fs-4" style="color: #373737; margin-right:5px;"></i>
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "password", @id = "password-input" } })
-                <span id="toggle-password" class="bi bi-eye" style="color: #373737; margin-left: -30px; cursor: pointer;"></span>
+                <span id="toggle-password" class="bi bi-eye-slash-fill fs-4" style="color: #373737; margin-left: -30px; cursor: pointer;"></span>
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
 
@@ -58,10 +58,10 @@
                 var type = passwordInput.attr('type');
                 if (type === 'password') {
                     passwordInput.attr('type', 'text');
-                    $(this).removeClass('bi-eye').addClass('bi-eye-slash');
+                    $(this).removeClass('bi-eye-slash-fill').addClass('bi-eye-fill');
                 } else {
                     passwordInput.attr('type', 'password');
-                    $(this).removeClass('bi-eye-slash').addClass('bi-eye');
+                    $(this).removeClass('bi-eye-fill').addClass('bi-eye-slash-fill');
                 }
             });
         });

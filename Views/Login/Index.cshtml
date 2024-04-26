@@ -24,17 +24,17 @@
         <div class="container d-flex align-content-center align-items-center flex-column">
             <h2 class="text-center py-3 rounded-3">Login</h2>
             <div class="form-group d-flex align-items-center py-3">
-                <i class="fa-solid fa-envelope" style="color: #373737; margin-right:5px;"></i>
+                <i class="bi bi-envelope-at-fill fs-4" style="color: #373737; margin-right:5px;"></i>
                 @Html.TextBoxFor(m => m.Nome, new { @class = "form-control", placeholder = "Email" })
                 @Html.ValidationMessageFor(m => m.Nome, "", new { @class = "text-danger" })
             </div>
 
             <div class="form-group d-flex align-items-center py-3">
-                <i class="fa-solid fa-key" style="color: #373737; margin-right:5px;"></i>
+                <i class="bi bi-key-fill fs-4" style="color: #373737; margin-right:5px;"></i>
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", @id = "password-input" })
                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
             </div>
-                <span id="toggle-password" class="fa-solid fa-eye" style="color: #373737; cursor: pointer;"></span>
+                <span id="toggle-password" class="bi bi-eye-slash-fill fs-4" style="color: #373737; cursor: pointer;"></span>
             <button type="submit" class="btn btn-success my-3">Accedi</button>
         </div>
     </div>
@@ -50,10 +50,10 @@
                 var type = passwordInput.attr('type');
                 if (type === 'password') {
                     passwordInput.attr('type', 'text');
-                    $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+                    $(this).removeClass('bi-eye-slash-fill fs-4').addClass('bi-eye-fill fs-4');
                 } else {
                     passwordInput.attr('type', 'password');
-                    $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+                    $(this).removeClass('bi-eye-fill fs-4').addClass('bi-eye-slash-fill fs-4');
                 }
             });
         });
