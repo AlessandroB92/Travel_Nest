@@ -26,131 +26,145 @@ Travel Nest è una piattaforma web dedicata alla prenotazione di alloggi per bre
 
    ```bash
    git clone https://github.com/tuonome/travel-nest.git
-Apri il progetto in Visual Studio e esegui il build della soluzione.
-Assicurati di avere i seguenti pacchetti NuGet installati:
-Microsoft.AspNet.Mvc
-EntityFramework
-Assicurati di avere un server SQL Server configurato e modifica la stringa di connessione nel file web.config.
-Esegui gli script per creare le tabelle nel database Travel_Nest. Puoi farlo eseguendo gli script seguenti nel tuo server SQL Server:
-Admin:
-sql
-Copy code
--- Script per creare la tabella Admin
-CREATE TABLE [dbo].[Admin](
-   [IDAdmin] [int] IDENTITY(1,1) NOT NULL,
-     NOT NULL,
-     NOT NULL,
-     NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-   [IDAdmin] ASC
-)ON [PRIMARY]
-) ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Admin] ADD  DEFAULT ('Admin') FOR [Ruolo]
-GO
-Utenti:
-sql
-Copy code
--- Script per creare la tabella Utenti
-CREATE TABLE [dbo].[Utenti](
-   [IDUtente] [int] IDENTITY(1,1) NOT NULL,
-     NULL,
-     NULL,
-     NULL,
-     NULL,
-     NOT NULL,
-PRIMARY KEY CLUSTERED 
-(
-   [IDUtente] ASC
-)ON [PRIMARY]
-) ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Utenti] ADD  DEFAULT ('User') FOR [Ruolo]
-GO
-Alloggi:
-sql
-Copy code
--- Script per creare la tabella Alloggi
-CREATE TABLE [dbo].[Alloggi](
-   [IDAlloggio] [int] IDENTITY(1,1) NOT NULL,
-   [IDUtente] [int] NULL,
-     NULL,
-   [Descrizione] [nvarchar](max) NULL,
-     NULL,
-   [PrezzoPerNotte] [decimal](10, 2) NULL,
-   [Disponibilita] [bit] NULL,
-PRIMARY KEY CLUSTERED 
-(
-   [IDAlloggio] ASC
-)ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Alloggi]  WITH CHECK ADD FOREIGN KEY([IDUtente])
-REFERENCES [dbo].[Utenti] ([IDUtente])
-GO
-ImmaginiAlloggi:
-sql
-Copy code
--- Script per creare la tabella ImmaginiAlloggi
-CREATE TABLE [dbo].[ImmaginiAlloggi](
-   [IDImmagine] [int] IDENTITY(1,1) NOT NULL,
-   [IDAlloggio] [int] NULL,
-     NULL,
-   [FileData] [image] NULL,
-PRIMARY KEY CLUSTERED 
-(
-   [IDImmagine] ASC
-)ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[ImmaginiAlloggi]  WITH CHECK ADD FOREIGN KEY([IDAlloggio])
-REFERENCES [dbo].[Alloggi] ([IDAlloggio])
-GO
-Prenotazioni:
-sql
-Copy code
--- Script per creare la tabella Prenotazioni
-CREATE TABLE [dbo].[Prenotazioni](
-   [IDPrenotazione] [int] IDENTITY(1,1) NOT NULL,
-   [IDUtente] [int] NULL,
-   [IDAlloggio] [int] NULL,
-   [DataCheckIn] [date] NULL,
-   [DataCheckOut] [date] NULL,
-   [StatoPrenotazione] [nvarchar](20) NULL,
-PRIMARY KEY CLUSTERED 
-(
-   [IDPrenotazione] ASC
-)ON [PRIMARY]
-) ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Prenotazioni]  WITH CHECK ADD FOREIGN KEY([IDAlloggio])
-REFERENCES [dbo].[Alloggi] ([IDAlloggio])
-GO
-ALTER TABLE [dbo].[Prenotazioni]  WITH CHECK ADD FOREIGN KEY([IDUtente])
-REFERENCES [dbo].[Utenti] ([IDUtente])
-GO
-Recensioni:
-sql
-Copy code
--- Script per creare la tabella Recensioni
-CREATE TABLE [dbo].[Recensioni](
-   [IDRecensione] [int] IDENTITY(1,1) NOT NULL,
-   [IDUtente] [int] NULL,
-   [IDAlloggio] [int] NULL,
-   [TestoRecensione] [nvarchar](max) NULL,
-   [Valutazione] [int] NULL,
-   [DataRecensione] [date] NULL,
-PRIMARY KEY CLUSTERED 
-(
-   [IDRecensione] ASC
-)ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-ALTER TABLE [dbo].[Recensioni]  WITH CHECK ADD FOREIGN KEY([IDAlloggio])
-REFERENCES [dbo].[Alloggi] ([IDAlloggio])
-GO
-ALTER TABLE [dbo].[Recensioni]  WITH CHECK ADD FOREIGN KEY([IDUtente])
-REFERENCES [dbo].[Utenti] ([IDUtente])
-GO
-Avvia l'applicazione.
+   ```
+
+2. Apri il progetto in Visual Studio e esegui il build della soluzione.
+
+3. Assicurati di avere i seguenti pacchetti NuGet installati:
+
+   - `Microsoft.AspNet.Mvc`
+   - `EntityFramework`
+
+4. Assicurati di avere un server SQL Server configurato e modifica la stringa di connessione nel file `web.config`.
+
+5. Esegui gli script per creare le tabelle nel database `Travel_Nest`. Puoi farlo eseguendo gli script seguenti nel tuo server SQL Server:
+
+   - **Admin**:
+
+     ```sql
+     CREATE TABLE [dbo].[Admin](
+        [IDAdmin] [int] IDENTITY(1,1) NOT NULL,
+          NOT NULL,
+          NOT NULL,
+          NOT NULL,
+     PRIMARY KEY CLUSTERED 
+     (
+        [IDAdmin] ASC
+     )ON [PRIMARY]
+     ) ON [PRIMARY]
+     GO
+     ALTER TABLE [dbo].[Admin] ADD  DEFAULT ('Admin') FOR [Ruolo]
+     GO
+     ```
+
+   - **Utenti**:
+
+     ```sql
+     CREATE TABLE [dbo].[Utenti](
+        [IDUtente] [int] IDENTITY(1,1) NOT NULL,
+          NULL,
+          NULL,
+          NULL,
+          NULL,
+          NOT NULL,
+     PRIMARY KEY CLUSTERED 
+     (
+        [IDUtente] ASC
+     )ON [PRIMARY]
+     ) ON [PRIMARY]
+     GO
+     ALTER TABLE [dbo].[Utenti] ADD  DEFAULT ('User') FOR [Ruolo]
+     GO
+     ```
+
+   - **Alloggi**:
+
+     ```sql
+     CREATE TABLE [dbo].[Alloggi](
+        [IDAlloggio] [int] IDENTITY(1,1) NOT NULL,
+        [IDUtente] [int] NULL,
+          NULL,
+        [Descrizione] [nvarchar](max) NULL,
+          NULL,
+        [PrezzoPerNotte] [decimal](10, 2) NULL,
+        [Disponibilita] [bit] NULL,
+     PRIMARY KEY CLUSTERED 
+     (
+        [IDAlloggio] ASC
+     )ON [PRIMARY]
+     ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+     GO
+     ALTER TABLE [dbo].[Alloggi]  WITH CHECK ADD FOREIGN KEY([IDUtente])
+     REFERENCES [dbo].[Utenti] ([IDUtente])
+     GO
+     ```
+
+   - **ImmaginiAlloggi**:
+
+     ```sql
+     CREATE TABLE [dbo].[ImmaginiAlloggi](
+        [IDImmagine] [int] IDENTITY(1,1) NOT NULL,
+        [IDAlloggio] [int] NULL,
+          NULL,
+        [FileData] [image] NULL,
+     PRIMARY KEY CLUSTERED 
+     (
+        [IDImmagine] ASC
+     )ON [PRIMARY]
+     ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+     GO
+     ALTER TABLE [dbo].[ImmaginiAlloggi]  WITH CHECK ADD FOREIGN KEY([IDAlloggio])
+     REFERENCES [dbo].[Alloggi] ([IDAlloggio])
+     GO
+     ```
+
+   - **Prenotazioni**:
+
+     ```sql
+     CREATE TABLE [dbo].[Prenotazioni](
+        [IDPrenotazione] [int] IDENTITY(1,1) NOT NULL,
+        [IDUtente] [int] NULL,
+        [IDAlloggio] [int] NULL,
+        [DataCheckIn] [date] NULL,
+        [DataCheckOut] [date] NULL,
+        [StatoPrenotazione] [nvarchar](20) NULL,
+     PRIMARY KEY CLUSTERED 
+     (
+        [IDPrenotazione] ASC
+     )ON [PRIMARY]
+     ) ON [PRIMARY]
+     GO
+     ALTER TABLE [dbo].[Prenotazioni]  WITH CHECK ADD FOREIGN KEY([IDAlloggio])
+     REFERENCES [dbo].[Alloggi] ([IDAlloggio])
+     GO
+     ALTER TABLE [dbo].[Prenotazioni]  WITH CHECK ADD FOREIGN KEY([IDUtente])
+     REFERENCES [dbo].[Utenti] ([IDUtente])
+     GO
+     ```
+
+   - **Recensioni**:
+
+     ```sql
+     CREATE TABLE [dbo].[Recensioni](
+        [IDRecensione] [int] IDENTITY(1,1) NOT NULL,
+        [IDUtente] [int] NULL,
+        [IDAlloggio] [int] NULL,
+        [TestoRecensione] [nvarchar](max) NULL,
+        [Valutazione] [int] NULL,
+        [DataRecensione] [date] NULL,
+     PRIMARY KEY CLUSTERED 
+     (
+        [IDRecensione] ASC
+     )ON [PRIMARY]
+     ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+     GO
+     ALTER TABLE [dbo].[Recensioni]  WITH CHECK ADD FOREIGN KEY([IDAlloggio])
+     REFERENCES [dbo].[Alloggi] ([IDAlloggio])
+     GO
+     ALTER TABLE [dbo].[Recensioni]  WITH CHECK ADD FOREIGN KEY([IDUtente])
+     REFERENCES [dbo].[Utenti] ([IDUtente])
+     GO
+     ```
+
+6. Avvia l'applicazione.
+
